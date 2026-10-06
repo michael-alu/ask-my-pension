@@ -19,3 +19,13 @@ notes/
 data/raw/*
 !data/raw/.gitkeep
 !data/raw/manifest.csv
+
+# Processed passages contain the publishers' text too, and are rebuilt by
+# scripts/build_passages.py. The build report is small and is kept.
+data/processed/*.jsonl
+
+# Editor settings with paths to one machine
+.vscode/
+
+# Left over if a save to annotations ever fails partway
+data/annotations/*.tmp

@@ -4,7 +4,7 @@ lxml
 pandas
 numpy
 requests
-pypdf
+pdfplumber
 
 # Retrieval
 rank-bm25
@@ -23,3 +23,7 @@ textstat
 
 # Annotation tool and web app
 gradio
+
+# Type checking
+mypy
+types-requests
