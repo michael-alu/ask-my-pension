@@ -60,6 +60,18 @@ results            metrics, tables and figures
 
 ## How to run
 
+Needs Python 3.10 or newer. Install the dependencies with:
+
+```
+pip install -r requirements.txt
+```
+
+All code is type annotated. Check the types the way `tsc` would, with:
+
+```
+mypy src scripts
+```
+
 ### 1. Get the source documents
 
 The source documents belong to their publishers, so they are not stored in this
@@ -73,6 +85,55 @@ python scripts/download_sources.py
 This saves every document, untouched, into `data/raw/`. Compare the checksums
 against [data/raw/manifest.csv](data/raw/manifest.csv) to confirm you have the
 same copies we used.
+
+### 2. Build the passages
+
+```
+python scripts/build_passages.py
+```
+
+This cleans the documents and writes `data/processed/passages.jsonl`. FAQ answers
+become one passage each, with their question kept next to them. Legal documents
+become one passage per numbered clause, plus one per row of their definitions
+tables. Every passage records its source, section, whether the source is `plain`
+(written for ordinary workers) or `legal`, its Flesch Reading Ease score, and any
+rates or naira amounts that may go out of date.
+
+### 3. Stats and glossary suggestions
+
+```
+python scripts/passage_stats.py
+python scripts/suggest_glossary_terms.py
+```
+
+The first writes [results/passage_stats.json](results/passage_stats.json). The
+second counts the most common pension acronyms and phrases into
+[data/glossary/term_candidates.csv](data/glossary/term_candidates.csv). The
+glossary itself, [data/glossary/glossary.csv](data/glossary/glossary.csv), is
+written by hand.
+
+### 4. Freeze the train, validation and test split
+
+```
+python scripts/make_splits.py
+```
+
+Passages are split by section, never one by one, so questions about the same
+section cannot appear in both training and test. The result,
+[data/splits/sections.json](data/splits/sections.json), is committed and frozen
+before any annotation is written.
+
+### 5. Annotate
+
+```
+python scripts/make_review_files.py
+python scripts/annotation_tool.py
+```
+
+The first creates the review files in `data/annotations/` and never overwrites
+them. The second opens a local page for writing annotations, which are saved to
+`data/annotations/annotations.jsonl` as passage IDs and answer positions. The
+passage text is not stored, because it belongs to the publishers.
 
 _Later steps not written yet._
 
