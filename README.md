@@ -60,7 +60,21 @@ results            metrics, tables and figures
 
 ## How to run
 
-_Not written yet._
+### 1. Get the source documents
+
+The source documents belong to their publishers, so they are not stored in this
+repository. The list of sources is in [data/sources.csv](data/sources.csv).
+Download them with:
+
+```
+python scripts/download_sources.py
+```
+
+This saves every document, untouched, into `data/raw/`. Compare the checksums
+against [data/raw/manifest.csv](data/raw/manifest.csv) to confirm you have the
+same copies we used.
+
+_Later steps not written yet._
 
 ## Dataset
 
