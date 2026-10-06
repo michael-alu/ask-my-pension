@@ -13,3 +13,9 @@ models/
 
 # working notes, not part of the submitted project
 notes/
+
+# Raw documents belong to their publishers, so we share the download script and
+# manifest instead of the files. Run scripts/download_sources.py to rebuild them.
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/manifest.csv
