@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.DS_Store
+.ipynb_checkpoints/
+
+# Trained model weights are too large for git
+models/
+*.bin
+*.safetensors
+
+# working notes, not part of the submitted project
+notes/

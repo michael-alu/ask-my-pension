@@ -1,0 +1,25 @@
+# Core data work
+beautifulsoup4
+lxml
+pandas
+numpy
+requests
+pypdf
+
+# Retrieval
+rank-bm25
+sentence-transformers
+
+# Reader model and training
+torch
+transformers
+datasets
+accelerate
+
+# Evaluation and readability
+scikit-learn
+evaluate
+textstat
+
+# Annotation tool and web app
+gradio
