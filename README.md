@@ -135,6 +135,13 @@ them. The second opens a local page for writing annotations, which are saved to
 `data/annotations/annotations.jsonl` as passage IDs and answer positions. The
 passage text is not stored, because it belongs to the publishers.
 
+FAQ questions are not span-annotated by hand. The FAQ answers were written to answer
+their questions directly, so each whole answer is used as the answer span, by rule.
+Their beginner or detailed level is labelled by hand in `faq_levels.csv` for the test
+and validation splits. Hand annotation focuses on what the FAQ cannot provide:
+questions written the way workers ask them, questions about the legal passages, and
+questions that a passage does not answer.
+
 _Later steps not written yet._
 
 ## Dataset
