@@ -65,7 +65,7 @@ def show(passage_id: str, question: str, status: str) -> Screen:
     return passage["text"], question, "", passage_id, message
 
 
-def next_faq(current_id: str | None, status: str = "") -> Screen:
+def next_faq(current_id: str | None, split: str, status: str = "") -> Screen:
     done = {a["passage_id"] for a in load_annotations() if a["from_faq"]}
 
     start = 0
@@ -76,12 +76,17 @@ def next_faq(current_id: str | None, status: str = "") -> Screen:
     in_order = FAQ_IDS[start:] + FAQ_IDS[:start]
 
     for passage_id in in_order:
+        passage_split = split_of(PASSAGES_BY_ID[passage_id], SPLITS)
+
+        if split != "any" and passage_split != split:
+            continue
+
         if passage_id not in done:
             question = PASSAGES_BY_ID[passage_id]["faq_question"] or ""
 
             return show(passage_id, question, status)
 
-    return "", "", "", None, "All FAQ questions are done."
+    return "", "", "", None, f"All FAQ questions in split '{split}' are done."
 
 
 def random_passage(style: str, split: str) -> Screen:
@@ -164,10 +169,10 @@ def stay(passage_id: str | None, question: str, answer: str, problem: str) -> Sc
     return passage_text, question, answer, passage_id, f"**{problem}**"
 
 
-def after_saving(passage_id: str, question: str, status: str) -> Screen:
+def after_saving(passage_id: str, question: str, status: str, split: str) -> Screen:
     """FAQ questions move on to the next one. Your own questions stay on the same passage."""
     if question == PASSAGES_BY_ID[passage_id]["faq_question"]:
-        return next_faq(passage_id, status)
+        return next_faq(passage_id, split, status)
 
     return show(
         passage_id,
@@ -177,7 +182,7 @@ def after_saving(passage_id: str, question: str, status: str) -> Screen:
 
 
 def save(
-    passage_id: str | None, question: str, answer: str, level: str | None
+    passage_id: str | None, question: str, answer: str, level: str | None, split: str
 ) -> Screen:
     answer = answer.strip()
 
@@ -188,10 +193,12 @@ def save(
 
     status = add_annotation(passage_id, question.strip(), answer, level)
 
-    return after_saving(passage_id, question, status)
+    return after_saving(passage_id, question, status, split)
 
 
-def save_no_answer(passage_id: str | None, question: str, level: str | None) -> Screen:
+def save_no_answer(
+    passage_id: str | None, question: str, level: str | None, split: str
+) -> Screen:
     problem = problem_with(passage_id, question, None, level)
 
     if problem or passage_id is None or level is None:
@@ -199,7 +206,7 @@ def save_no_answer(passage_id: str | None, question: str, level: str | None) -> 
 
     status = add_annotation(passage_id, question.strip(), None, level) + " (no answer)"
 
-    return after_saving(passage_id, question, status)
+    return after_saving(passage_id, question, status, split)
 
 
 def undo() -> str:
@@ -261,16 +268,20 @@ with gr.Blocks(title="Annotation tool") as page:
 
     screen = [passage_box, question_box, answer_box, current_id, message_box]
 
-    next_faq_button.click(next_faq, inputs=[current_id], outputs=screen)
+    next_faq_button.click(next_faq, inputs=[current_id, split_box], outputs=screen)
 
     random_button.click(random_passage, inputs=[style_box, split_box], outputs=screen)
 
     save_button.click(
-        save, inputs=[current_id, question_box, answer_box, level_box], outputs=screen
+        save,
+        inputs=[current_id, question_box, answer_box, level_box, split_box],
+        outputs=screen,
     )
 
     no_answer_button.click(
-        save_no_answer, inputs=[current_id, question_box, level_box], outputs=screen
+        save_no_answer,
+        inputs=[current_id, question_box, level_box, split_box],
+        outputs=screen,
     )
 
     undo_button.click(undo, outputs=[message_box])
