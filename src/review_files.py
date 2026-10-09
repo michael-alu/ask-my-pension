@@ -18,6 +18,8 @@ NUMBER_REVIEW_FILE = ANNOTATIONS_FOLDER / "number_review.csv"
 
 OUT_OF_DOMAIN_FILE = ANNOTATIONS_FOLDER / "out_of_domain.csv"
 
+FAQ_LEVELS_FILE = ANNOTATIONS_FOLDER / "faq_levels.csv"
+
 
 def read_rows(path: Path) -> list[dict[str, str]]:
     if not path.exists():

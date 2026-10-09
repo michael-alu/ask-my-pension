@@ -1,9 +1,12 @@
 """
 A small local web page for writing annotations.
 
-- "Next FAQ question" shows a real FAQ question with its passage. Highlight the answer and save.
-- "Random passage" shows any passage. Write your own question, highlight the answer and save.
-  Or write a question this passage does NOT answer and press "No answer in this passage".
+Press "Random passage", write a question a real worker might ask about it, highlight the answer
+and save. Or write a question the passage sounds related to but does NOT answer, and press
+"No answer in this passage". You stay on the same passage, so you can write several questions.
+
+FAQ questions are not annotated here. Their answers are used whole, by rule, when the
+training file is built.
 
 Annotations are saved to data/annotations/annotations.jsonl.
 
@@ -21,13 +24,12 @@ import gradio as gr
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
-from src.annotations import (
+from src.annotations import (  # noqa: E402
     find_answer_start,
-    is_short_faq_answer,
     load_annotations,
     progress_report,
     save_annotations,
-)  # noqa: E402
+)
 from src.data_types import Annotation, Passage  # noqa: E402
 from src.review_files import load_excluded_ids  # noqa: E402
 from src.splits import load_splits, split_of  # noqa: E402
@@ -50,10 +52,8 @@ PASSAGES = [p for p in read_passages() if p["passage_id"] not in EXCLUDED_IDS]
 
 PASSAGES_BY_ID = {p["passage_id"]: p for p in PASSAGES}
 
-FAQ_IDS = [p["passage_id"] for p in PASSAGES if p["faq_question"]]
 
-
-def show(passage_id: str, question: str, status: str, answer: str = "") -> Screen:
+def show(passage_id: str, status: str) -> Screen:
     """Everything on screen: passage text, question, answer, current passage id, and the message."""
     passage = PASSAGES_BY_ID[passage_id]
 
@@ -63,40 +63,7 @@ def show(passage_id: str, question: str, status: str, answer: str = "") -> Scree
 
     message = f"{status}  \n{info}  \n\n{progress}"
 
-    return passage["text"], question, answer, passage_id, message
-
-
-def next_faq(current_id: str | None, split: str, status: str = "") -> Screen:
-    done = {a["passage_id"] for a in load_annotations() if a["from_faq"]}
-
-    start = 0
-
-    if current_id in FAQ_IDS:
-        start = FAQ_IDS.index(current_id) + 1
-
-    in_order = FAQ_IDS[start:] + FAQ_IDS[:start]
-
-    for passage_id in in_order:
-        passage_split = split_of(PASSAGES_BY_ID[passage_id], SPLITS)
-
-        if split != "any" and passage_split != split:
-            continue
-
-        passage = PASSAGES_BY_ID[passage_id]
-
-        handled_by_rule = passage_split == "train" and is_short_faq_answer(passage)
-
-        if passage_id in done or handled_by_rule:
-            continue
-
-        question = passage["faq_question"] or ""
-
-        if is_short_faq_answer(passage):
-            return show(passage_id, question, status, answer=passage["text"])
-
-        return show(passage_id, question, status)
-
-    return "", "", "", None, f"All FAQ questions in split '{split}' are done."
+    return passage["text"], "", "", passage_id, message
 
 
 def random_passage(style: str, split: str) -> Screen:
@@ -116,7 +83,7 @@ def random_passage(style: str, split: str) -> Screen:
 
     passage = random.choice(candidates)
 
-    return show(passage["passage_id"], "", "")
+    return show(passage["passage_id"], "")
 
 
 def add_annotation(
@@ -145,14 +112,14 @@ def add_annotation(
 
     save_annotations(annotations)
 
-    return f"Saved {annotation['annotation_id']}."
+    return f"Saved {annotation['annotation_id']}. Write another question on this passage, or pick a new one."
 
 
 def problem_with(
     passage_id: str | None, question: str, answer: str | None, level: str | None
 ) -> str | None:
     if passage_id is None:
-        return "Press 'Next FAQ question' or 'Random passage' first."
+        return "Press 'Random passage' first."
 
     if not question.strip():
         return "Write a question first."
@@ -179,20 +146,8 @@ def stay(passage_id: str | None, question: str, answer: str, problem: str) -> Sc
     return passage_text, question, answer, passage_id, f"**{problem}**"
 
 
-def after_saving(passage_id: str, question: str, status: str, split: str) -> Screen:
-    """FAQ questions move on to the next one. Your own questions stay on the same passage."""
-    if question == PASSAGES_BY_ID[passage_id]["faq_question"]:
-        return next_faq(passage_id, split, status)
-
-    return show(
-        passage_id,
-        "",
-        status + " Write another question on this passage, or pick a new one.",
-    )
-
-
 def save(
-    passage_id: str | None, question: str, answer: str, level: str | None, split: str
+    passage_id: str | None, question: str, answer: str, level: str | None
 ) -> Screen:
     answer = answer.strip()
 
@@ -203,20 +158,18 @@ def save(
 
     status = add_annotation(passage_id, question.strip(), answer, level)
 
-    return after_saving(passage_id, question, status, split)
+    return show(passage_id, status)
 
 
-def save_no_answer(
-    passage_id: str | None, question: str, level: str | None, split: str
-) -> Screen:
+def save_no_answer(passage_id: str | None, question: str, level: str | None) -> Screen:
     problem = problem_with(passage_id, question, None, level)
 
     if problem or passage_id is None or level is None:
         return stay(passage_id, question, "", problem or "")
 
-    status = add_annotation(passage_id, question.strip(), None, level) + " (no answer)"
+    status = add_annotation(passage_id, question.strip(), None, level)
 
-    return after_saving(passage_id, question, status, split)
+    return show(passage_id, status)
 
 
 def undo() -> str:
@@ -242,14 +195,12 @@ with gr.Blocks(title="Annotation tool") as page:
     current_id = gr.State(None)
 
     with gr.Row():
-        next_faq_button = gr.Button("Next FAQ question")
-
         random_button = gr.Button("Random passage")
 
-        style_box = gr.Dropdown(["any", "plain", "legal"], value="any", label="Style")
+        style_box = gr.Dropdown(["any", "plain", "legal"], value="legal", label="Style")
 
         split_box = gr.Dropdown(
-            ["any", "train", "validation", "test"], value="any", label="Split"
+            ["any", "train", "validation", "test"], value="test", label="Split"
         )
 
     message_box = gr.Markdown()
@@ -260,7 +211,7 @@ with gr.Blocks(title="Annotation tool") as page:
         interactive=False,
     )
 
-    question_box = gr.Textbox(label="Question (do not edit FAQ questions)")
+    question_box = gr.Textbox(label="Your question, the way a real worker would ask it")
 
     answer_box = gr.Textbox(label="Answer (filled in when you highlight)")
 
@@ -278,20 +229,14 @@ with gr.Blocks(title="Annotation tool") as page:
 
     screen = [passage_box, question_box, answer_box, current_id, message_box]
 
-    next_faq_button.click(next_faq, inputs=[current_id, split_box], outputs=screen)
-
     random_button.click(random_passage, inputs=[style_box, split_box], outputs=screen)
 
     save_button.click(
-        save,
-        inputs=[current_id, question_box, answer_box, level_box, split_box],
-        outputs=screen,
+        save, inputs=[current_id, question_box, answer_box, level_box], outputs=screen
     )
 
     no_answer_button.click(
-        save_no_answer,
-        inputs=[current_id, question_box, level_box, split_box],
-        outputs=screen,
+        save_no_answer, inputs=[current_id, question_box, level_box], outputs=screen
     )
 
     undo_button.click(undo, outputs=[message_box])
