@@ -23,6 +23,7 @@ sys.path.append(str(PROJECT_ROOT))
 
 from src.annotations import (
     find_answer_start,
+    is_short_faq_answer,
     load_annotations,
     progress_report,
     save_annotations,
@@ -52,7 +53,7 @@ PASSAGES_BY_ID = {p["passage_id"]: p for p in PASSAGES}
 FAQ_IDS = [p["passage_id"] for p in PASSAGES if p["faq_question"]]
 
 
-def show(passage_id: str, question: str, status: str) -> Screen:
+def show(passage_id: str, question: str, status: str, answer: str = "") -> Screen:
     """Everything on screen: passage text, question, answer, current passage id, and the message."""
     passage = PASSAGES_BY_ID[passage_id]
 
@@ -62,7 +63,7 @@ def show(passage_id: str, question: str, status: str) -> Screen:
 
     message = f"{status}  \n{info}  \n\n{progress}"
 
-    return passage["text"], question, "", passage_id, message
+    return passage["text"], question, answer, passage_id, message
 
 
 def next_faq(current_id: str | None, split: str, status: str = "") -> Screen:
@@ -81,10 +82,19 @@ def next_faq(current_id: str | None, split: str, status: str = "") -> Screen:
         if split != "any" and passage_split != split:
             continue
 
-        if passage_id not in done:
-            question = PASSAGES_BY_ID[passage_id]["faq_question"] or ""
+        passage = PASSAGES_BY_ID[passage_id]
 
-            return show(passage_id, question, status)
+        handled_by_rule = passage_split == "train" and is_short_faq_answer(passage)
+
+        if passage_id in done or handled_by_rule:
+            continue
+
+        question = passage["faq_question"] or ""
+
+        if is_short_faq_answer(passage):
+            return show(passage_id, question, status, answer=passage["text"])
+
+        return show(passage_id, question, status)
 
     return "", "", "", None, f"All FAQ questions in split '{split}' are done."
 

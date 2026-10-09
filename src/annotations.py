@@ -48,6 +48,15 @@ def save_annotations(annotations: list[Annotation]) -> None:
     temporary_file.replace(ANNOTATIONS_FILE)
 
 
+def is_short_faq_answer(passage: Passage) -> bool:
+    """One sentence of 30 words or fewer. For these, the whole answer is the shortest complete answer."""
+    text = passage["text"]
+
+    sentence_endings = text.count(". ") + text.count("? ") + text.count("! ")
+
+    return passage["faq_question"] is not None and sentence_endings == 0 and len(text.split()) <= 30
+
+
 def find_answer_start(passage_text: str, answer: str) -> int | None:
     position = passage_text.find(answer)
 
