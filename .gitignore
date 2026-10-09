@@ -21,7 +21,7 @@ data/raw/*
 !data/raw/manifest.csv
 
 # Processed passages contain the publishers' text too, and are rebuilt by
-# scripts/build_passages.py. The build report is small and is kept.
+# scripts/build_passages.py.
 data/processed/*.jsonl
 
 # Editor settings with paths to one machine
