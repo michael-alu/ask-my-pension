@@ -1,9 +1,9 @@
 """
 A small local web page for writing annotations.
 
-Press "Random passage", write a question a real worker might ask about it, highlight the answer
+Press "New passage", write a question a real worker might ask about it, highlight the answer
 and save. Or write a question the passage sounds related to but does NOT answer, and press
-"No answer in this passage". After each save, a new passage you have not annotated yet appears.
+"Save question: this passage does NOT answer it". After each save, a new passage you have not annotated yet appears.
 
 FAQ questions are not annotated here. Their answers are used whole, by rule, when the
 training file is built.
@@ -125,7 +125,7 @@ def problem_with(
     passage_id: str | None, question: str, answer: str | None, level: str | None
 ) -> str | None:
     if passage_id is None:
-        return "Press 'Random passage' first."
+        return "Press 'New passage' first."
 
     if not question.strip():
         return "Write a question first."
@@ -175,6 +175,13 @@ def save(
 def save_no_answer(
     passage_id: str | None, question: str, level: str | None, style: str, split: str
 ) -> Screen:
+    if passage_id is not None and not question.strip():
+        problem_text = (
+            "Write a question that this passage does NOT answer, then press this button. "
+            "To skip a passage instead, press 'New passage'."
+        )
+        return stay(passage_id, question, "", problem_text)
+
     problem = problem_with(passage_id, question, None, level)
 
     if problem or passage_id is None or level is None:
@@ -208,7 +215,7 @@ with gr.Blocks(title="Annotation tool") as page:
     current_id = gr.State(None)
 
     with gr.Row():
-        random_button = gr.Button("Random passage")
+        random_button = gr.Button("New passage (skips this one)")
 
         style_box = gr.Dropdown(["any", "plain", "legal"], value="legal", label="Style")
 
@@ -234,9 +241,9 @@ with gr.Blocks(title="Annotation tool") as page:
     )
 
     with gr.Row():
-        save_button = gr.Button("Save", variant="primary")
+        save_button = gr.Button("Save question and answer", variant="primary")
 
-        no_answer_button = gr.Button("No answer in this passage")
+        no_answer_button = gr.Button("Save question: this passage does NOT answer it")
 
         undo_button = gr.Button("Undo last save", variant="stop")
 
