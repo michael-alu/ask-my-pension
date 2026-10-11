@@ -3,7 +3,7 @@ A small local web page for writing annotations.
 
 Press "Random passage", write a question a real worker might ask about it, highlight the answer
 and save. Or write a question the passage sounds related to but does NOT answer, and press
-"No answer in this passage". You stay on the same passage, so you can write several questions.
+"No answer in this passage". After each save, a new passage you have not annotated yet appears.
 
 FAQ questions are not annotated here. Their answers are used whole, by rule, when the
 training file is built.
@@ -66,10 +66,16 @@ def show(passage_id: str, status: str) -> Screen:
     return passage["text"], "", "", passage_id, message
 
 
-def random_passage(style: str, split: str) -> Screen:
+def random_passage(style: str, split: str, status: str = "") -> Screen:
+    """A random passage that matches the filters and has not been annotated yet."""
+    annotated_ids = {a["passage_id"] for a in load_annotations()}
+
     candidates = []
 
     for passage in PASSAGES:
+        if passage["passage_id"] in annotated_ids:
+            continue
+
         if style != "any" and passage["style"] != style:
             continue
 
@@ -83,7 +89,7 @@ def random_passage(style: str, split: str) -> Screen:
 
     passage = random.choice(candidates)
 
-    return show(passage["passage_id"], "")
+    return show(passage["passage_id"], status)
 
 
 def add_annotation(
@@ -112,7 +118,7 @@ def add_annotation(
 
     save_annotations(annotations)
 
-    return f"Saved {annotation['annotation_id']}. Write another question on this passage, or pick a new one."
+    return f"Saved {annotation['annotation_id']}."
 
 
 def problem_with(
@@ -147,7 +153,12 @@ def stay(passage_id: str | None, question: str, answer: str, problem: str) -> Sc
 
 
 def save(
-    passage_id: str | None, question: str, answer: str, level: str | None
+    passage_id: str | None,
+    question: str,
+    answer: str,
+    level: str | None,
+    style: str,
+    split: str,
 ) -> Screen:
     answer = answer.strip()
 
@@ -158,18 +169,20 @@ def save(
 
     status = add_annotation(passage_id, question.strip(), answer, level)
 
-    return show(passage_id, status)
+    return random_passage(style, split, status)
 
 
-def save_no_answer(passage_id: str | None, question: str, level: str | None) -> Screen:
+def save_no_answer(
+    passage_id: str | None, question: str, level: str | None, style: str, split: str
+) -> Screen:
     problem = problem_with(passage_id, question, None, level)
 
     if problem or passage_id is None or level is None:
         return stay(passage_id, question, "", problem or "")
 
-    status = add_annotation(passage_id, question.strip(), None, level)
+    status = add_annotation(passage_id, question.strip(), None, level) + " (no answer)"
 
-    return show(passage_id, status)
+    return random_passage(style, split, status)
 
 
 def undo() -> str:
@@ -232,11 +245,15 @@ with gr.Blocks(title="Annotation tool") as page:
     random_button.click(random_passage, inputs=[style_box, split_box], outputs=screen)
 
     save_button.click(
-        save, inputs=[current_id, question_box, answer_box, level_box], outputs=screen
+        save,
+        inputs=[current_id, question_box, answer_box, level_box, style_box, split_box],
+        outputs=screen,
     )
 
     no_answer_button.click(
-        save_no_answer, inputs=[current_id, question_box, level_box], outputs=screen
+        save_no_answer,
+        inputs=[current_id, question_box, level_box, style_box, split_box],
+        outputs=screen,
     )
 
     undo_button.click(undo, outputs=[message_box])
