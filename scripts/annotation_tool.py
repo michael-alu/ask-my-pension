@@ -92,6 +92,16 @@ def random_passage(style: str, split: str, status: str = "") -> Screen:
     return show(passage["passage_id"], status)
 
 
+def next_annotation_id(annotations: list[Annotation]) -> str:
+    """The highest existing number plus one, so ids stay unique even after deleting one."""
+    highest = 0
+
+    for annotation in annotations:
+        highest = max(highest, int(annotation["annotation_id"].lstrip("a")))
+
+    return f"a{highest + 1:04d}"
+
+
 def add_annotation(
     passage_id: str, question: str, answer: str | None, level: str
 ) -> str:
@@ -110,7 +120,7 @@ def add_annotation(
         "answer_text": answer,
         "passage_id": passage_id,
         "answer_start": answer_start,
-        "annotation_id": f"a{len(annotations) + 1:04d}",
+        "annotation_id": next_annotation_id(annotations),
         "from_faq": question == passage["faq_question"],
     }
 
