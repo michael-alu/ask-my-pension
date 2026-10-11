@@ -60,11 +60,17 @@ results            metrics, tables and figures
 
 ## How to run
 
-Needs Python 3.10 or newer. Install the dependencies with:
+Needs Python 3.10 or newer. Create a project environment and install the
+dependencies:
 
 ```
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+The versions in `requirements.txt` are chosen so the project runs the same on an
+Intel Mac (where PyTorch stops at 2.2.2), on Google Colab and in a Codespace.
 
 All code is type annotated. Check the types the way `tsc` would, with:
 
@@ -154,6 +160,28 @@ Recall@1, Recall@5 and MRR@10 on the validation and test splits, broken down by
 question origin, source style and level, plus the reading ease of the top passage.
 Results go to `results/bm25_results.json`, and every experiment adds a row to
 [results/experiments.md](results/experiments.md).
+
+### 7. Build the SQuAD files
+
+```
+python scripts/export_squad.py
+```
+
+Turns the FAQ pairs and the annotations into SQuAD 2.0 style examples in
+`data/squad/` (one file per split). Each example records where it came from:
+`faq_rule` (an FAQ question with its whole answer as the span), `faq_human`
+(an FAQ question whose span was marked by hand) or `own` (a hand-written question).
+
+### 8. Evaluate the zero-shot reader
+
+```
+python scripts/evaluate_reader.py deepset/roberta-base-squad2
+```
+
+Runs an off-the-shelf SQuAD 2.0 model with no extra training. It is scored with
+Exact Match and F1 in two settings: given the gold passage (the reader alone), and
+end to end after BM25 retrieves the top 3 passages (the whole system). It also
+measures the refusal rate on the out-of-domain questions.
 
 _Later steps not written yet._
 
