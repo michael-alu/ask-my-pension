@@ -1,0 +1,6 @@
+# Experiments
+
+| experiment | split | questions | recall_at_1 | recall_at_5 | mrr_at_10 | exact_match | f1 | ood_refusal_rate | top1_reading_ease | notes |
+|---|---|---|---|---|---|---|---|---|---|---|
+| BM25 retriever (baseline) | validation | 71 | 0.239 | 0.549 | 0.358 |  |  |  | 40.7 |  |
+| BM25 retriever (baseline) | test | 127 | 0.276 | 0.472 | 0.357 |  |  |  | 27.0 |  |
