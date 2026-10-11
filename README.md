@@ -172,16 +172,35 @@ Turns the FAQ pairs and the annotations into SQuAD 2.0 style examples in
 `faq_rule` (an FAQ question with its whole answer as the span), `faq_human`
 (an FAQ question whose span was marked by hand) or `own` (a hand-written question).
 
-### 8. Evaluate the zero-shot reader
+### 8. Evaluate a dense retriever
 
 ```
-python scripts/evaluate_reader.py deepset/roberta-base-squad2
+python scripts/evaluate_dense.py BAAI/bge-small-en-v1.5
 ```
 
-Runs an off-the-shelf SQuAD 2.0 model with no extra training. It is scored with
-Exact Match and F1 in two settings: given the gold passage (the reader alone), and
-end to end after BM25 retrieves the top 3 passages (the whole system). It also
-measures the refusal rate on the out-of-domain questions.
+Scores a dense retriever exactly like BM25, so the numbers compare directly. It
+takes an off-the-shelf model name or a fine-tuned model folder.
+
+### 9. Evaluate a reader
+
+```
+python scripts/evaluate_reader.py deepset/roberta-base-squad2 bm25
+```
+
+The first argument is the reader (a model name or a fine-tuned folder), the second
+is the retriever (`bm25`, or a dense model). The reader is scored with Exact Match
+and F1 in two settings: given the gold passage (the reader alone), and end to end
+on the retriever's top 3 passages (the whole system). It also measures the refusal
+rate on the out-of-domain questions. The no-answer threshold is tuned on the
+validation split and then applied unchanged to test.
+
+### 10. Fine-tune on Google Colab
+
+Open [notebooks/train_on_colab.ipynb](notebooks/train_on_colab.ipynb) in Colab with
+a T4 GPU, upload `data/processed/passages.jsonl`, and run the cells in order. It
+fine-tunes both retrievers (`scripts/train_retriever.py`) and both readers
+(`scripts/train_reader.py`), evaluates every combination, repeats training on 25%,
+50% and 75% of the data, and gives back `results.zip` to copy into `results/`.
 
 _Later steps not written yet._
 
