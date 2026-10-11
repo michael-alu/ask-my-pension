@@ -5,12 +5,17 @@ For each question and passage, the model gives a score to its best span and a sc
 answer". The margin is the first minus the second. We answer only when the margin is above a
 threshold. A threshold of 0 is the model's own default. The threshold is tuned on the
 validation split, never on test.
+
+Answers may be up to 300 tokens long. The pipeline's hidden default is 15 tokens, which silently
+cut off our gold answers (median 34 words) and made fine-tuned readers look broken.
 """
 
 from typing import Any
 
 import torch
 from transformers import pipeline
+
+MAX_ANSWER_TOKENS = 300
 
 
 def load_reader(model_name: str) -> Any:
@@ -21,7 +26,13 @@ def load_reader(model_name: str) -> Any:
 
 def read(reader: Any, question: str, context: str) -> tuple[str, float]:
     """Return the best answer span and its margin over "no answer"."""
-    results = reader(question=question, context=context, handle_impossible_answer=True, top_k=5)
+    results = reader(
+        question=question,
+        context=context,
+        handle_impossible_answer=True,
+        top_k=5,
+        max_answer_len=MAX_ANSWER_TOKENS,
+    )
 
     if isinstance(results, dict):
         results = [results]

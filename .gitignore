@@ -32,3 +32,6 @@ data/annotations/*.tmp
 
 # SQuAD files hold the passage text, and are rebuilt by scripts/export_squad.py
 data/squad/
+
+# Downloads from Colab (results and models are unzipped into the repo instead)
+*.zip
