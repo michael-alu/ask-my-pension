@@ -1,0 +1,107 @@
+{
+  "validation/all": {
+    "questions": 71,
+    "recall_at_1": 0.366,
+    "recall_at_5": 0.789,
+    "mrr_at_10": 0.539,
+    "top1_reading_ease": 46.1
+  },
+  "validation/origin=faq": {
+    "questions": 66,
+    "recall_at_1": 0.379,
+    "recall_at_5": 0.818,
+    "mrr_at_10": 0.56,
+    "top1_reading_ease": 46.0
+  },
+  "validation/origin=own": {
+    "questions": 5,
+    "recall_at_1": 0.2,
+    "recall_at_5": 0.4,
+    "mrr_at_10": 0.267,
+    "top1_reading_ease": 48.0
+  },
+  "validation/style=plain": {
+    "questions": 71,
+    "recall_at_1": 0.366,
+    "recall_at_5": 0.789,
+    "mrr_at_10": 0.539,
+    "top1_reading_ease": 46.1
+  },
+  "validation/level=beginner": {
+    "questions": 3,
+    "recall_at_1": 0.0,
+    "recall_at_5": 0.333,
+    "mrr_at_10": 0.111,
+    "top1_reading_ease": 50.8
+  },
+  "validation/level=detailed": {
+    "questions": 2,
+    "recall_at_1": 0.5,
+    "recall_at_5": 0.5,
+    "mrr_at_10": 0.5,
+    "top1_reading_ease": 43.8
+  },
+  "validation/level=unlabelled": {
+    "questions": 66,
+    "recall_at_1": 0.379,
+    "recall_at_5": 0.818,
+    "mrr_at_10": 0.56,
+    "top1_reading_ease": 46.0
+  },
+  "test/all": {
+    "questions": 125,
+    "recall_at_1": 0.352,
+    "recall_at_5": 0.568,
+    "mrr_at_10": 0.442,
+    "top1_reading_ease": 34.8
+  },
+  "test/origin=faq": {
+    "questions": 82,
+    "recall_at_1": 0.402,
+    "recall_at_5": 0.683,
+    "mrr_at_10": 0.52,
+    "top1_reading_ease": 35.4
+  },
+  "test/origin=own": {
+    "questions": 43,
+    "recall_at_1": 0.256,
+    "recall_at_5": 0.349,
+    "mrr_at_10": 0.292,
+    "top1_reading_ease": 33.7
+  },
+  "test/style=legal": {
+    "questions": 22,
+    "recall_at_1": 0.136,
+    "recall_at_5": 0.273,
+    "mrr_at_10": 0.185,
+    "top1_reading_ease": 31.2
+  },
+  "test/style=plain": {
+    "questions": 103,
+    "recall_at_1": 0.398,
+    "recall_at_5": 0.631,
+    "mrr_at_10": 0.496,
+    "top1_reading_ease": 35.6
+  },
+  "test/level=beginner": {
+    "questions": 25,
+    "recall_at_1": 0.36,
+    "recall_at_5": 0.44,
+    "mrr_at_10": 0.39,
+    "top1_reading_ease": 33.2
+  },
+  "test/level=detailed": {
+    "questions": 18,
+    "recall_at_1": 0.111,
+    "recall_at_5": 0.222,
+    "mrr_at_10": 0.156,
+    "top1_reading_ease": 34.4
+  },
+  "test/level=unlabelled": {
+    "questions": 82,
+    "recall_at_1": 0.402,
+    "recall_at_5": 0.683,
+    "mrr_at_10": 0.52,
+    "top1_reading_ease": 35.4
+  }
+}

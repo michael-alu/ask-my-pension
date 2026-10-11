@@ -4,7 +4,6 @@
 |---|---|---|---|---|---|---|---|---|---|---|
 | BM25 retriever (baseline) | validation | 71 | 0.239 | 0.549 | 0.358 |  |  |  | 40.7 |  |
 | BM25 retriever (baseline) | test | 125 | 0.28 | 0.464 | 0.354 |  |  |  | 26.8 |  |
-| Zero-shot reader roberta-base-squad2, gold passage | validation | 75 |  |  |  | 0.053 | 0.219 |  |  | answerable F1 0.175, no-answer accuracy 1.0 |
-| BM25 + zero-shot reader roberta-base-squad2, end to end | validation | 75 |  |  |  | 0.027 | 0.108 |  | 36.9 | answerable F1 0.086, no-answer accuracy 0.5 |
-| Zero-shot reader roberta-base-squad2, gold passage | test | 134 |  |  |  | 0.075 | 0.26 |  |  | answerable F1 0.206, no-answer accuracy 1.0 |
-| BM25 + zero-shot reader roberta-base-squad2, end to end | test | 134 |  |  |  | 0.03 | 0.144 | 0.867 | 32.0 | answerable F1 0.122, no-answer accuracy 0.444 |
+| BM25 + reader roberta-base-squad2 (zero-shot), end to end | test | 134 |  |  |  | 0.007 | 0.148 | 0.578 | 30.5 | threshold -0.8 (tuned on validation); answerable F1 0.15, no-answer accuracy 0.111; at threshold 0: F1 0.144, OOD refusal 0.867 |
+| Reader roberta-base-squad2 (zero-shot), gold passage | test | 134 |  |  |  | 0.037 | 0.302 |  |  | threshold -0.8 (tuned on validation); answerable F1 0.292, no-answer accuracy 0.444 |
+| bge-small-en-v1.5 (zero-shot) + reader roberta-base-squad2 (zero-shot), end to end | test | 134 |  |  |  | 0.007 | 0.157 | 0.422 | 35.6 | threshold -0.8 (tuned on validation); answerable F1 0.16, no-answer accuracy 0.111; at threshold 0: F1 0.153, OOD refusal 0.8 |

@@ -1,72 +1,138 @@
 {
-  "model": "deepset/roberta-base-squad2",
-  "threshold": 0.0,
+  "reader": "deepset/roberta-base-squad2",
+  "retriever": "bm25",
+  "tuned_threshold": -0.8,
   "validation/gold_passage": {
     "all": {
       "questions": 75,
-      "exact_match": 0.053,
-      "f1": 0.219,
-      "answerable_f1": 0.175,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.013,
+      "f1": 0.27,
+      "answerable_f1": 0.271,
+      "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
     },
     "origin=faq_rule": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.184,
-      "answerable_f1": 0.184,
+      "f1": 0.266,
+      "answerable_f1": 0.266,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
     },
     "origin=own": {
       "questions": 9,
-      "exact_match": 0.444,
-      "f1": 0.474,
-      "answerable_f1": 0.053,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.111,
+      "f1": 0.304,
+      "answerable_f1": 0.347,
+      "no_answer_accuracy": 0.25,
       "answerable": 5,
       "no_answer": 4
     },
     "style=plain": {
       "questions": 75,
-      "exact_match": 0.053,
-      "f1": 0.219,
-      "answerable_f1": 0.175,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.013,
+      "f1": 0.27,
+      "answerable_f1": 0.271,
+      "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
     },
     "level=beginner": {
       "questions": 4,
-      "exact_match": 0.25,
-      "f1": 0.294,
-      "answerable_f1": 0.059,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.0,
+      "f1": 0.337,
+      "answerable_f1": 0.45,
+      "no_answer_accuracy": 0.0,
       "answerable": 3,
       "no_answer": 1
     },
     "level=detailed": {
       "questions": 5,
-      "exact_match": 0.6,
-      "f1": 0.617,
-      "answerable_f1": 0.043,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.2,
+      "f1": 0.277,
+      "answerable_f1": 0.193,
+      "no_answer_accuracy": 0.333,
       "answerable": 2,
       "no_answer": 3
     },
     "level=unlabelled": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.184,
-      "answerable_f1": 0.184,
+      "f1": 0.266,
+      "answerable_f1": 0.266,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
     }
   },
   "validation/end_to_end": {
+    "all": {
+      "questions": 75,
+      "exact_match": 0.013,
+      "f1": 0.119,
+      "answerable_f1": 0.112,
+      "no_answer_accuracy": 0.25,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "origin=faq_rule": {
+      "questions": 66,
+      "exact_match": 0.0,
+      "f1": 0.117,
+      "answerable_f1": 0.117,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 9,
+      "exact_match": 0.111,
+      "f1": 0.137,
+      "answerable_f1": 0.047,
+      "no_answer_accuracy": 0.25,
+      "answerable": 5,
+      "no_answer": 4
+    },
+    "style=plain": {
+      "questions": 75,
+      "exact_match": 0.013,
+      "f1": 0.119,
+      "answerable_f1": 0.112,
+      "no_answer_accuracy": 0.25,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "level=beginner": {
+      "questions": 4,
+      "exact_match": 0.0,
+      "f1": 0.039,
+      "answerable_f1": 0.053,
+      "no_answer_accuracy": 0.0,
+      "answerable": 3,
+      "no_answer": 1
+    },
+    "level=detailed": {
+      "questions": 5,
+      "exact_match": 0.2,
+      "f1": 0.215,
+      "answerable_f1": 0.038,
+      "no_answer_accuracy": 0.333,
+      "answerable": 2,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 66,
+      "exact_match": 0.0,
+      "f1": 0.117,
+      "answerable_f1": 0.117,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    }
+  },
+  "validation/end_to_end_default_threshold": {
     "all": {
       "questions": 75,
       "exact_match": 0.027,
@@ -134,78 +200,152 @@
   "test/gold_passage": {
     "all": {
       "questions": 134,
-      "exact_match": 0.075,
-      "f1": 0.26,
-      "answerable_f1": 0.206,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.037,
+      "f1": 0.302,
+      "answerable_f1": 0.292,
+      "no_answer_accuracy": 0.444,
       "answerable": 125,
       "no_answer": 9
     },
     "origin=faq_rule": {
       "questions": 82,
       "exact_match": 0.0,
-      "f1": 0.243,
-      "answerable_f1": 0.243,
+      "f1": 0.304,
+      "answerable_f1": 0.304,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
     },
     "origin=own": {
       "questions": 52,
-      "exact_match": 0.192,
-      "f1": 0.286,
-      "answerable_f1": 0.137,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.096,
+      "f1": 0.3,
+      "answerable_f1": 0.27,
+      "no_answer_accuracy": 0.444,
       "answerable": 43,
       "no_answer": 9
     },
     "style=legal": {
       "questions": 31,
-      "exact_match": 0.323,
-      "f1": 0.398,
-      "answerable_f1": 0.152,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.161,
+      "f1": 0.316,
+      "answerable_f1": 0.263,
+      "no_answer_accuracy": 0.444,
       "answerable": 22,
       "no_answer": 9
     },
     "style=plain": {
       "questions": 103,
       "exact_match": 0.0,
-      "f1": 0.218,
-      "answerable_f1": 0.218,
+      "f1": 0.298,
+      "answerable_f1": 0.298,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
     },
     "level=beginner": {
       "questions": 31,
-      "exact_match": 0.226,
-      "f1": 0.333,
-      "answerable_f1": 0.173,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.129,
+      "f1": 0.347,
+      "answerable_f1": 0.311,
+      "no_answer_accuracy": 0.5,
       "answerable": 25,
       "no_answer": 6
     },
     "level=detailed": {
       "questions": 21,
-      "exact_match": 0.143,
-      "f1": 0.217,
-      "answerable_f1": 0.086,
-      "no_answer_accuracy": 1.0,
+      "exact_match": 0.048,
+      "f1": 0.231,
+      "answerable_f1": 0.214,
+      "no_answer_accuracy": 0.333,
       "answerable": 18,
       "no_answer": 3
     },
     "level=unlabelled": {
       "questions": 82,
       "exact_match": 0.0,
-      "f1": 0.243,
-      "answerable_f1": 0.243,
+      "f1": 0.304,
+      "answerable_f1": 0.304,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
     }
   },
   "test/end_to_end": {
+    "all": {
+      "questions": 134,
+      "exact_match": 0.007,
+      "f1": 0.148,
+      "answerable_f1": 0.15,
+      "no_answer_accuracy": 0.111,
+      "answerable": 125,
+      "no_answer": 9
+    },
+    "origin=faq_rule": {
+      "questions": 82,
+      "exact_match": 0.0,
+      "f1": 0.187,
+      "answerable_f1": 0.187,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 52,
+      "exact_match": 0.019,
+      "f1": 0.087,
+      "answerable_f1": 0.081,
+      "no_answer_accuracy": 0.111,
+      "answerable": 43,
+      "no_answer": 9
+    },
+    "style=legal": {
+      "questions": 31,
+      "exact_match": 0.032,
+      "f1": 0.085,
+      "answerable_f1": 0.075,
+      "no_answer_accuracy": 0.111,
+      "answerable": 22,
+      "no_answer": 9
+    },
+    "style=plain": {
+      "questions": 103,
+      "exact_match": 0.0,
+      "f1": 0.166,
+      "answerable_f1": 0.166,
+      "no_answer_accuracy": 0.0,
+      "answerable": 103,
+      "no_answer": 0
+    },
+    "level=beginner": {
+      "questions": 31,
+      "exact_match": 0.032,
+      "f1": 0.115,
+      "answerable_f1": 0.103,
+      "no_answer_accuracy": 0.167,
+      "answerable": 25,
+      "no_answer": 6
+    },
+    "level=detailed": {
+      "questions": 21,
+      "exact_match": 0.0,
+      "f1": 0.045,
+      "answerable_f1": 0.052,
+      "no_answer_accuracy": 0.0,
+      "answerable": 18,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 82,
+      "exact_match": 0.0,
+      "f1": 0.187,
+      "answerable_f1": 0.187,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    }
+  },
+  "test/end_to_end_default_threshold": {
     "all": {
       "questions": 134,
       "exact_match": 0.03,
@@ -280,282 +420,147 @@
     }
   },
   "out_of_domain": {
+    "refusal_rate": 0.578,
+    "by_distance": {
+      "far": 0.867,
+      "mid": 0.4,
+      "near": 0.467
+    },
+    "wrongly_answered": [
+      {
+        "question": "How do I file my personal income tax returns with FIRS?",
+        "distance": "near",
+        "answer": "render returns of such remittances to the Commission twice yearly"
+      },
+      {
+        "question": "Can I get a loan from my bank using my salary account?",
+        "distance": "near",
+        "answer": "MPP account cannot be used as collateral for a loan"
+      },
+      {
+        "question": "What is the current minimum wage in Nigeria?",
+        "distance": "near",
+        "answer": "one third of the prevailing minimum wage"
+      },
+      {
+        "question": "Is it safe to keep my savings in crypto?",
+        "distance": "near",
+        "answer": "The scheme is very safe"
+      },
+      {
+        "question": "Which savings app gives the highest interest in Nigeria?",
+        "distance": "near",
+        "answer": "Non-Interest Fund"
+      },
+      {
+        "question": "My salary has not been paid for three months. What can I do?",
+        "distance": "near",
+        "answer": "access equity contribution for residential mortgage"
+      },
+      {
+        "question": "How much tax should be deducted from my monthly salary?",
+        "distance": "near",
+        "answer": "3.31"
+      },
+      {
+        "question": "Can my employer deduct money from my salary for a staff loan?",
+        "distance": "near",
+        "answer": "without making any deduction from the employee\u2019s salary"
+      },
+      {
+        "question": "How do I renew my Nigerian international passport?",
+        "distance": "mid",
+        "answer": "Valid Green Card"
+      },
+      {
+        "question": "How do I get my NIN slip if I lost it?",
+        "distance": "mid",
+        "answer": "release my NIN information"
+      },
+      {
+        "question": "How much should I pay for school fees in a private secondary school in Lagos?",
+        "distance": "mid",
+        "answer": "VAT"
+      },
+      {
+        "question": "How do I verify that a land in Abuja has genuine documents?",
+        "distance": "mid",
+        "answer": "valuation report"
+      },
+      {
+        "question": "How do I change my name officially after marriage in Nigeria?",
+        "distance": "mid",
+        "answer": "Marriage Certificate"
+      },
+      {
+        "question": "How do I get a driver's licence in Nigeria?",
+        "distance": "mid",
+        "answer": "Valid means of identification"
+      },
+      {
+        "question": "What documents do I need to start an import business?",
+        "distance": "mid",
+        "answer": "Contact Name, Contact Email, Contact Number and Contact address"
+      },
+      {
+        "question": "How do I apply for a Nigerian government job?",
+        "distance": "mid",
+        "answer": "National Pension Commission"
+      },
+      {
+        "question": "How do I get a certificate of occupancy for my house?",
+        "distance": "mid",
+        "answer": "Birth Certificate"
+      },
+      {
+        "question": "Will it rain in Lagos tomorrow?",
+        "distance": "far",
+        "answer": "7.1"
+      },
+      {
+        "question": "What is the capital of Ghana?",
+        "distance": "far",
+        "answer": "Federal Capital Territory"
+      }
+    ]
+  },
+  "out_of_domain_default_threshold": {
     "refusal_rate": 0.867,
     "by_distance": {
       "far": 0.933,
       "mid": 0.8,
       "near": 0.867
     },
-    "examples": [
-      {
-        "question": "How do I file my personal income tax returns with FIRS?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
+    "wrongly_answered": [
       {
         "question": "Can I get a loan from my bank using my salary account?",
         "distance": "near",
-        "answer": "MPP account cannot be used as collateral for a loan",
-        "passage_id": "pencom_faq_2023-0241"
-      },
-      {
-        "question": "How do I register for NHIS health insurance at my workplace?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "What is the current minimum wage in Nigeria?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "My boss sacked me without notice. Can I sue him?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I contribute to the National Housing Fund?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Which stocks should I buy on the Nigerian Exchange this year?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
+        "answer": "MPP account cannot be used as collateral for a loan"
       },
       {
         "question": "Is it safe to keep my savings in crypto?",
         "distance": "near",
-        "answer": "The scheme is very safe",
-        "passage_id": "fcmb_faq-0026"
-      },
-      {
-        "question": "Which savings app gives the highest interest in Nigeria?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I claim my car insurance after an accident?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "My salary has not been paid for three months. What can I do?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I check my BVN on my phone?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "What is the difference between a current account and a savings account?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How much tax should be deducted from my monthly salary?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Can my employer deduct money from my salary for a staff loan?",
-        "distance": "near",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I renew my Nigerian international passport?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I get my NIN slip if I lost it?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I register my small business with CAC?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "When will JAMB results for this year come out?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How much should I pay for school fees in a private secondary school in Lagos?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I apply for a UK work visa from Nigeria?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
+        "answer": "The scheme is very safe"
       },
       {
         "question": "How do I verify that a land in Abuja has genuine documents?",
         "distance": "mid",
-        "answer": "valuation report",
-        "passage_id": "guide_mortgage_equity_2022-0061"
-      },
-      {
-        "question": "My landlord wants to increase rent by 50%. Is that legal?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
+        "answer": "valuation report"
       },
       {
         "question": "How do I change my name officially after marriage in Nigeria?",
         "distance": "mid",
-        "answer": "Marriage Certificate",
-        "passage_id": "pencom_faq_2023-0075"
+        "answer": "Marriage Certificate"
       },
       {
         "question": "How do I get a driver's licence in Nigeria?",
         "distance": "mid",
-        "answer": "Valid means of identification",
-        "passage_id": "pencom_faq_2023-0020"
-      },
-      {
-        "question": "Where can I buy cheap foodstuff in bulk in Kano?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "What documents do I need to start an import business?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I report a fraud alert on my bank account?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I apply for a Nigerian government job?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I get a certificate of occupancy for my house?",
-        "distance": "mid",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I cook jollof rice for 20 people?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Who won the last AFCON?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Will it rain in Lagos tomorrow?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Tell me a funny joke about Nigerian mothers.",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I learn Python programming as a beginner?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "My girlfriend is not picking my calls. What should I do?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "I have a headache and fever. Is it malaria?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "What is the best phone to buy under 200k naira?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Who is the richest man in Africa?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I fix my generator that won't start?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Write me a birthday message for my mum.",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
+        "answer": "Valid means of identification"
       },
       {
         "question": "What is the capital of Ghana?",
         "distance": "far",
-        "answer": "Federal Capital Territory",
-        "passage_id": "reg_retirement_benefits_2022-0160"
-      },
-      {
-        "question": "How do I lose belly fat fast?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "Which Nollywood movie is trending this week?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
-      },
-      {
-        "question": "How do I grow tomatoes in my backyard?",
-        "distance": "far",
-        "answer": "",
-        "passage_id": null
+        "answer": "Federal Capital Territory"
       }
     ]
   }
