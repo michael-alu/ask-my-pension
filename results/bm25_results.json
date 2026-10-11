@@ -49,11 +49,11 @@
     "top1_reading_ease": 41.2
   },
   "test/all": {
-    "questions": 127,
-    "recall_at_1": 0.276,
-    "recall_at_5": 0.472,
-    "mrr_at_10": 0.357,
-    "top1_reading_ease": 27.0
+    "questions": 125,
+    "recall_at_1": 0.28,
+    "recall_at_5": 0.464,
+    "mrr_at_10": 0.354,
+    "top1_reading_ease": 26.8
   },
   "test/origin=faq": {
     "questions": 82,
@@ -63,18 +63,18 @@
     "top1_reading_ease": 32.5
   },
   "test/origin=own": {
-    "questions": 45,
-    "recall_at_1": 0.044,
-    "recall_at_5": 0.244,
-    "mrr_at_10": 0.131,
-    "top1_reading_ease": 16.9
+    "questions": 43,
+    "recall_at_1": 0.047,
+    "recall_at_5": 0.209,
+    "mrr_at_10": 0.114,
+    "top1_reading_ease": 15.9
   },
   "test/style=legal": {
-    "questions": 24,
+    "questions": 22,
     "recall_at_1": 0.0,
-    "recall_at_5": 0.25,
-    "mrr_at_10": 0.095,
-    "top1_reading_ease": 14.5
+    "recall_at_5": 0.182,
+    "mrr_at_10": 0.058,
+    "top1_reading_ease": 12.3
   },
   "test/style=plain": {
     "questions": 103,
@@ -84,11 +84,11 @@
     "top1_reading_ease": 29.9
   },
   "test/level=beginner": {
-    "questions": 27,
-    "recall_at_1": 0.074,
-    "recall_at_5": 0.333,
-    "mrr_at_10": 0.187,
-    "top1_reading_ease": 17.8
+    "questions": 25,
+    "recall_at_1": 0.08,
+    "recall_at_5": 0.28,
+    "mrr_at_10": 0.162,
+    "top1_reading_ease": 16.1
   },
   "test/level=detailed": {
     "questions": 18,

@@ -3,4 +3,8 @@
 | experiment | split | questions | recall_at_1 | recall_at_5 | mrr_at_10 | exact_match | f1 | ood_refusal_rate | top1_reading_ease | notes |
 |---|---|---|---|---|---|---|---|---|---|---|
 | BM25 retriever (baseline) | validation | 71 | 0.239 | 0.549 | 0.358 |  |  |  | 40.7 |  |
-| BM25 retriever (baseline) | test | 127 | 0.276 | 0.472 | 0.357 |  |  |  | 27.0 |  |
+| BM25 retriever (baseline) | test | 125 | 0.28 | 0.464 | 0.354 |  |  |  | 26.8 |  |
+| Zero-shot reader roberta-base-squad2, gold passage | validation | 75 |  |  |  | 0.053 | 0.219 |  |  | answerable F1 0.175, no-answer accuracy 1.0 |
+| BM25 + zero-shot reader roberta-base-squad2, end to end | validation | 75 |  |  |  | 0.027 | 0.108 |  | 36.9 | answerable F1 0.086, no-answer accuracy 0.5 |
+| Zero-shot reader roberta-base-squad2, gold passage | test | 134 |  |  |  | 0.075 | 0.26 |  |  | answerable F1 0.206, no-answer accuracy 1.0 |
+| BM25 + zero-shot reader roberta-base-squad2, end to end | test | 134 |  |  |  | 0.03 | 0.144 | 0.867 | 32.0 | answerable F1 0.122, no-answer accuracy 0.444 |
