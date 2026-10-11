@@ -37,3 +37,24 @@ class Annotation(TypedDict):
     answer_start: int | None
     level: str
     from_faq: bool
+
+
+class EvalQuestion(TypedDict):
+    question: str
+    gold_passage_id: str
+    origin: str
+    level: str
+    split: str
+    style: str
+
+
+class RetrievalPrediction(TypedDict):
+    question: str
+    gold_passage_id: str
+    origin: str
+    level: str
+    split: str
+    style: str
+    top_ids: list[str]
+    rank: int | None
+
