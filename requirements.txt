@@ -1,28 +1,32 @@
-# Core data work
+# PyTorch stopped releasing new versions for Intel Macs at 2.2.2. These ranges are chosen so the
+# same project runs on an Intel Mac, on Google Colab and in a GitHub Codespace:
+# transformers 4.x still supports PyTorch 2.2, it needs huggingface-hub below 1.0,
+# and that in turn needs Gradio 5 and datasets 3. PyTorch 2.2 also needs numpy below 2.
+
+# Data work
 beautifulsoup4
-lxml
-pandas
-numpy
 requests
-pdfplumber
+# Pinned exactly: a newer version could extract text slightly differently, which would shift
+# the passages that the annotations point to.
+pdfplumber==0.11.9
+numpy<2
 
 # Retrieval
 rank-bm25
-sentence-transformers
+sentence-transformers>=3,<5
 
 # Reader model and training
 torch
-transformers
-datasets
+transformers>=4.44,<5
+huggingface-hub<1.0
+datasets>=3,<4
 accelerate
 
-# Evaluation and readability
-scikit-learn
-evaluate
+# Readability
 textstat
 
 # Annotation tool and web app
-gradio
+gradio>=5,<6
 
 # Type checking
 mypy

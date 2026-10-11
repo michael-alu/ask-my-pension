@@ -58,3 +58,16 @@ class RetrievalPrediction(TypedDict):
     top_ids: list[str]
     rank: int | None
 
+
+
+class SquadExample(TypedDict):
+    id: str
+    question: str
+    context: str
+    answer_text: str | None
+    answer_start: int | None
+    passage_id: str
+    origin: str
+    level: str
+    style: str
+    split: str

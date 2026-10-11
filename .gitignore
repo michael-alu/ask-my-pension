@@ -29,3 +29,6 @@ data/processed/*.jsonl
 
 # Left over if a save to annotations ever fails partway
 data/annotations/*.tmp
+
+# SQuAD files hold the passage text, and are rebuilt by scripts/export_squad.py
+data/squad/
