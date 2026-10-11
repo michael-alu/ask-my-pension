@@ -142,6 +142,19 @@ and validation splits. Hand annotation focuses on what the FAQ cannot provide:
 questions written the way workers ask them, questions about the legal passages, and
 questions that a passage does not answer.
 
+### 6. Evaluate the BM25 baseline retriever
+
+```
+python scripts/evaluate_bm25.py
+```
+
+BM25 ranks every searchable passage for each evaluation question: the FAQ questions,
+whose gold passage is their own answer, and the hand-written questions. It reports
+Recall@1, Recall@5 and MRR@10 on the validation and test splits, broken down by
+question origin, source style and level, plus the reading ease of the top passage.
+Results go to `results/bm25_results.json`, and every experiment adds a row to
+[results/experiments.md](results/experiments.md).
+
 _Later steps not written yet._
 
 ## Dataset
