@@ -1,22 +1,22 @@
 {
-  "reader": "models/reader-roberta-base-squad2-100pct",
+  "reader": "models/reader-roberta-base-squad2-100pct-random",
   "retriever": "bm25",
-  "tuned_threshold": 0.0,
+  "tuned_threshold": -0.05,
   "validation/gold_passage": {
     "all": {
       "questions": 75,
-      "exact_match": 0.48,
-      "f1": 0.81,
-      "answerable_f1": 0.842,
+      "exact_match": 0.467,
+      "f1": 0.801,
+      "answerable_f1": 0.833,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
     },
     "origin=faq_rule": {
       "questions": 66,
-      "exact_match": 0.5,
-      "f1": 0.84,
-      "answerable_f1": 0.84,
+      "exact_match": 0.485,
+      "f1": 0.83,
+      "answerable_f1": 0.83,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -32,9 +32,9 @@
     },
     "style=plain": {
       "questions": 75,
-      "exact_match": 0.48,
-      "f1": 0.81,
-      "answerable_f1": 0.842,
+      "exact_match": 0.467,
+      "f1": 0.801,
+      "answerable_f1": 0.833,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -59,9 +59,9 @@
     },
     "level=unlabelled": {
       "questions": 66,
-      "exact_match": 0.5,
-      "f1": 0.84,
-      "answerable_f1": 0.84,
+      "exact_match": 0.485,
+      "f1": 0.83,
+      "answerable_f1": 0.83,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -136,8 +136,8 @@
     "all": {
       "questions": 75,
       "exact_match": 0.133,
-      "f1": 0.37,
-      "answerable_f1": 0.377,
+      "f1": 0.368,
+      "answerable_f1": 0.374,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -145,8 +145,8 @@
     "origin=faq_rule": {
       "questions": 66,
       "exact_match": 0.136,
-      "f1": 0.398,
-      "answerable_f1": 0.398,
+      "f1": 0.395,
+      "answerable_f1": 0.395,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -163,8 +163,8 @@
     "style=plain": {
       "questions": 75,
       "exact_match": 0.133,
-      "f1": 0.37,
-      "answerable_f1": 0.377,
+      "f1": 0.368,
+      "answerable_f1": 0.374,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -190,8 +190,8 @@
     "level=unlabelled": {
       "questions": 66,
       "exact_match": 0.136,
-      "f1": 0.398,
-      "answerable_f1": 0.398,
+      "f1": 0.395,
+      "answerable_f1": 0.395,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -201,8 +201,8 @@
     "all": {
       "questions": 134,
       "exact_match": 0.575,
-      "f1": 0.747,
-      "answerable_f1": 0.736,
+      "f1": 0.745,
+      "answerable_f1": 0.735,
       "no_answer_accuracy": 0.889,
       "answerable": 125,
       "no_answer": 9
@@ -210,8 +210,8 @@
     "origin=faq_rule": {
       "questions": 82,
       "exact_match": 0.695,
-      "f1": 0.881,
-      "answerable_f1": 0.881,
+      "f1": 0.878,
+      "answerable_f1": 0.878,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -237,8 +237,8 @@
     "style=plain": {
       "questions": 103,
       "exact_match": 0.641,
-      "f1": 0.847,
-      "answerable_f1": 0.847,
+      "f1": 0.845,
+      "answerable_f1": 0.845,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
@@ -264,8 +264,8 @@
     "level=unlabelled": {
       "questions": 82,
       "exact_match": 0.695,
-      "f1": 0.881,
-      "answerable_f1": 0.881,
+      "f1": 0.878,
+      "answerable_f1": 0.878,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -274,18 +274,18 @@
   "test/end_to_end": {
     "all": {
       "questions": 134,
-      "exact_match": 0.179,
-      "f1": 0.339,
-      "answerable_f1": 0.339,
+      "exact_match": 0.187,
+      "f1": 0.347,
+      "answerable_f1": 0.347,
       "no_answer_accuracy": 0.333,
       "answerable": 125,
       "no_answer": 9
     },
     "origin=faq_rule": {
       "questions": 82,
-      "exact_match": 0.244,
-      "f1": 0.421,
-      "answerable_f1": 0.421,
+      "exact_match": 0.256,
+      "f1": 0.432,
+      "answerable_f1": 0.432,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -293,8 +293,8 @@
     "origin=own": {
       "questions": 52,
       "exact_match": 0.077,
-      "f1": 0.21,
-      "answerable_f1": 0.184,
+      "f1": 0.212,
+      "answerable_f1": 0.187,
       "no_answer_accuracy": 0.333,
       "answerable": 43,
       "no_answer": 9
@@ -302,17 +302,17 @@
     "style=legal": {
       "questions": 31,
       "exact_match": 0.097,
-      "f1": 0.206,
-      "answerable_f1": 0.154,
+      "f1": 0.21,
+      "answerable_f1": 0.16,
       "no_answer_accuracy": 0.333,
       "answerable": 22,
       "no_answer": 9
     },
     "style=plain": {
       "questions": 103,
-      "exact_match": 0.204,
-      "f1": 0.379,
-      "answerable_f1": 0.379,
+      "exact_match": 0.214,
+      "f1": 0.388,
+      "answerable_f1": 0.388,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
@@ -320,8 +320,8 @@
     "level=beginner": {
       "questions": 31,
       "exact_match": 0.097,
-      "f1": 0.239,
-      "answerable_f1": 0.216,
+      "f1": 0.242,
+      "answerable_f1": 0.22,
       "no_answer_accuracy": 0.333,
       "answerable": 25,
       "no_answer": 6
@@ -329,17 +329,17 @@
     "level=detailed": {
       "questions": 21,
       "exact_match": 0.048,
-      "f1": 0.168,
-      "answerable_f1": 0.14,
+      "f1": 0.169,
+      "answerable_f1": 0.142,
       "no_answer_accuracy": 0.333,
       "answerable": 18,
       "no_answer": 3
     },
     "level=unlabelled": {
       "questions": 82,
-      "exact_match": 0.244,
-      "f1": 0.421,
-      "answerable_f1": 0.421,
+      "exact_match": 0.256,
+      "f1": 0.432,
+      "answerable_f1": 0.432,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -348,18 +348,18 @@
   "test/end_to_end_default_threshold": {
     "all": {
       "questions": 134,
-      "exact_match": 0.179,
-      "f1": 0.339,
-      "answerable_f1": 0.339,
+      "exact_match": 0.187,
+      "f1": 0.346,
+      "answerable_f1": 0.347,
       "no_answer_accuracy": 0.333,
       "answerable": 125,
       "no_answer": 9
     },
     "origin=faq_rule": {
       "questions": 82,
-      "exact_match": 0.244,
-      "f1": 0.421,
-      "answerable_f1": 0.421,
+      "exact_match": 0.256,
+      "f1": 0.432,
+      "answerable_f1": 0.432,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -367,8 +367,8 @@
     "origin=own": {
       "questions": 52,
       "exact_match": 0.077,
-      "f1": 0.21,
-      "answerable_f1": 0.184,
+      "f1": 0.212,
+      "answerable_f1": 0.186,
       "no_answer_accuracy": 0.333,
       "answerable": 43,
       "no_answer": 9
@@ -376,17 +376,17 @@
     "style=legal": {
       "questions": 31,
       "exact_match": 0.097,
-      "f1": 0.206,
-      "answerable_f1": 0.154,
+      "f1": 0.209,
+      "answerable_f1": 0.158,
       "no_answer_accuracy": 0.333,
       "answerable": 22,
       "no_answer": 9
     },
     "style=plain": {
       "questions": 103,
-      "exact_match": 0.204,
-      "f1": 0.379,
-      "answerable_f1": 0.379,
+      "exact_match": 0.214,
+      "f1": 0.388,
+      "answerable_f1": 0.388,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
@@ -394,8 +394,8 @@
     "level=beginner": {
       "questions": 31,
       "exact_match": 0.097,
-      "f1": 0.239,
-      "answerable_f1": 0.216,
+      "f1": 0.242,
+      "answerable_f1": 0.22,
       "no_answer_accuracy": 0.333,
       "answerable": 25,
       "no_answer": 6
@@ -411,9 +411,9 @@
     },
     "level=unlabelled": {
       "questions": 82,
-      "exact_match": 0.244,
-      "f1": 0.421,
-      "answerable_f1": 0.421,
+      "exact_match": 0.256,
+      "f1": 0.432,
+      "answerable_f1": 0.432,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0

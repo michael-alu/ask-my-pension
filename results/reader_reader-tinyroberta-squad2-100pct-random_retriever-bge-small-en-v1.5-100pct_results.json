@@ -1,5 +1,5 @@
 {
-  "reader": "models/reader-tinyroberta-squad2-100pct",
+  "reader": "models/reader-tinyroberta-squad2-100pct-random",
   "retriever": "models/retriever-bge-small-en-v1.5-100pct",
   "tuned_threshold": -0.85,
   "validation/gold_passage": {

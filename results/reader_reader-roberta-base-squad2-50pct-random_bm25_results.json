@@ -1,5 +1,5 @@
 {
-  "reader": "models/reader-roberta-base-squad2-50pct",
+  "reader": "models/reader-roberta-base-squad2-50pct-random",
   "retriever": "bm25",
   "tuned_threshold": 0.0,
   "validation/gold_passage": {
@@ -201,8 +201,8 @@
     "all": {
       "questions": 134,
       "exact_match": 0.56,
-      "f1": 0.786,
-      "answerable_f1": 0.795,
+      "f1": 0.789,
+      "answerable_f1": 0.798,
       "no_answer_accuracy": 0.667,
       "answerable": 125,
       "no_answer": 9
@@ -210,8 +210,8 @@
     "origin=faq_rule": {
       "questions": 82,
       "exact_match": 0.683,
-      "f1": 0.876,
-      "answerable_f1": 0.876,
+      "f1": 0.881,
+      "answerable_f1": 0.881,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -237,8 +237,8 @@
     "style=plain": {
       "questions": 103,
       "exact_match": 0.641,
-      "f1": 0.859,
-      "answerable_f1": 0.859,
+      "f1": 0.863,
+      "answerable_f1": 0.863,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
@@ -264,8 +264,8 @@
     "level=unlabelled": {
       "questions": 82,
       "exact_match": 0.683,
-      "f1": 0.876,
-      "answerable_f1": 0.876,
+      "f1": 0.881,
+      "answerable_f1": 0.881,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0

@@ -1,0 +1,542 @@
+{
+  "reader": "models/reader-roberta-base-squad2-50pct-matched",
+  "retriever": "bm25",
+  "tuned_threshold": -0.55,
+  "validation/gold_passage": {
+    "all": {
+      "questions": 75,
+      "exact_match": 0.48,
+      "f1": 0.811,
+      "answerable_f1": 0.829,
+      "no_answer_accuracy": 0.5,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "origin=faq_rule": {
+      "questions": 66,
+      "exact_match": 0.47,
+      "f1": 0.824,
+      "answerable_f1": 0.824,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 9,
+      "exact_match": 0.556,
+      "f1": 0.721,
+      "answerable_f1": 0.897,
+      "no_answer_accuracy": 0.5,
+      "answerable": 5,
+      "no_answer": 4
+    },
+    "style=plain": {
+      "questions": 75,
+      "exact_match": 0.48,
+      "f1": 0.811,
+      "answerable_f1": 0.829,
+      "no_answer_accuracy": 0.5,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "level=beginner": {
+      "questions": 4,
+      "exact_match": 0.5,
+      "f1": 0.737,
+      "answerable_f1": 0.983,
+      "no_answer_accuracy": 0.0,
+      "answerable": 3,
+      "no_answer": 1
+    },
+    "level=detailed": {
+      "questions": 5,
+      "exact_match": 0.6,
+      "f1": 0.708,
+      "answerable_f1": 0.769,
+      "no_answer_accuracy": 0.667,
+      "answerable": 2,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 66,
+      "exact_match": 0.47,
+      "f1": 0.824,
+      "answerable_f1": 0.824,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    }
+  },
+  "validation/end_to_end": {
+    "all": {
+      "questions": 75,
+      "exact_match": 0.133,
+      "f1": 0.385,
+      "answerable_f1": 0.392,
+      "no_answer_accuracy": 0.25,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "origin=faq_rule": {
+      "questions": 66,
+      "exact_match": 0.136,
+      "f1": 0.415,
+      "answerable_f1": 0.415,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 9,
+      "exact_match": 0.111,
+      "f1": 0.16,
+      "answerable_f1": 0.088,
+      "no_answer_accuracy": 0.25,
+      "answerable": 5,
+      "no_answer": 4
+    },
+    "style=plain": {
+      "questions": 75,
+      "exact_match": 0.133,
+      "f1": 0.385,
+      "answerable_f1": 0.392,
+      "no_answer_accuracy": 0.25,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "level=beginner": {
+      "questions": 4,
+      "exact_match": 0.0,
+      "f1": 0.11,
+      "answerable_f1": 0.147,
+      "no_answer_accuracy": 0.0,
+      "answerable": 3,
+      "no_answer": 1
+    },
+    "level=detailed": {
+      "questions": 5,
+      "exact_match": 0.2,
+      "f1": 0.2,
+      "answerable_f1": 0.0,
+      "no_answer_accuracy": 0.333,
+      "answerable": 2,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 66,
+      "exact_match": 0.136,
+      "f1": 0.415,
+      "answerable_f1": 0.415,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    }
+  },
+  "validation/end_to_end_default_threshold": {
+    "all": {
+      "questions": 75,
+      "exact_match": 0.147,
+      "f1": 0.393,
+      "answerable_f1": 0.387,
+      "no_answer_accuracy": 0.5,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "origin=faq_rule": {
+      "questions": 66,
+      "exact_match": 0.136,
+      "f1": 0.415,
+      "answerable_f1": 0.415,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 9,
+      "exact_match": 0.222,
+      "f1": 0.231,
+      "answerable_f1": 0.016,
+      "no_answer_accuracy": 0.5,
+      "answerable": 5,
+      "no_answer": 4
+    },
+    "style=plain": {
+      "questions": 75,
+      "exact_match": 0.147,
+      "f1": 0.393,
+      "answerable_f1": 0.387,
+      "no_answer_accuracy": 0.5,
+      "answerable": 71,
+      "no_answer": 4
+    },
+    "level=beginner": {
+      "questions": 4,
+      "exact_match": 0.0,
+      "f1": 0.02,
+      "answerable_f1": 0.027,
+      "no_answer_accuracy": 0.0,
+      "answerable": 3,
+      "no_answer": 1
+    },
+    "level=detailed": {
+      "questions": 5,
+      "exact_match": 0.4,
+      "f1": 0.4,
+      "answerable_f1": 0.0,
+      "no_answer_accuracy": 0.667,
+      "answerable": 2,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 66,
+      "exact_match": 0.136,
+      "f1": 0.415,
+      "answerable_f1": 0.415,
+      "no_answer_accuracy": 0.0,
+      "answerable": 66,
+      "no_answer": 0
+    }
+  },
+  "test/gold_passage": {
+    "all": {
+      "questions": 134,
+      "exact_match": 0.545,
+      "f1": 0.797,
+      "answerable_f1": 0.806,
+      "no_answer_accuracy": 0.667,
+      "answerable": 125,
+      "no_answer": 9
+    },
+    "origin=faq_rule": {
+      "questions": 82,
+      "exact_match": 0.683,
+      "f1": 0.868,
+      "answerable_f1": 0.868,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 52,
+      "exact_match": 0.327,
+      "f1": 0.685,
+      "answerable_f1": 0.689,
+      "no_answer_accuracy": 0.667,
+      "answerable": 43,
+      "no_answer": 9
+    },
+    "style=legal": {
+      "questions": 31,
+      "exact_match": 0.29,
+      "f1": 0.677,
+      "answerable_f1": 0.682,
+      "no_answer_accuracy": 0.667,
+      "answerable": 22,
+      "no_answer": 9
+    },
+    "style=plain": {
+      "questions": 103,
+      "exact_match": 0.621,
+      "f1": 0.833,
+      "answerable_f1": 0.833,
+      "no_answer_accuracy": 0.0,
+      "answerable": 103,
+      "no_answer": 0
+    },
+    "level=beginner": {
+      "questions": 31,
+      "exact_match": 0.387,
+      "f1": 0.753,
+      "answerable_f1": 0.734,
+      "no_answer_accuracy": 0.833,
+      "answerable": 25,
+      "no_answer": 6
+    },
+    "level=detailed": {
+      "questions": 21,
+      "exact_match": 0.238,
+      "f1": 0.584,
+      "answerable_f1": 0.626,
+      "no_answer_accuracy": 0.333,
+      "answerable": 18,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 82,
+      "exact_match": 0.683,
+      "f1": 0.868,
+      "answerable_f1": 0.868,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    }
+  },
+  "test/end_to_end": {
+    "all": {
+      "questions": 134,
+      "exact_match": 0.216,
+      "f1": 0.381,
+      "answerable_f1": 0.384,
+      "no_answer_accuracy": 0.333,
+      "answerable": 125,
+      "no_answer": 9
+    },
+    "origin=faq_rule": {
+      "questions": 82,
+      "exact_match": 0.305,
+      "f1": 0.488,
+      "answerable_f1": 0.488,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 52,
+      "exact_match": 0.077,
+      "f1": 0.211,
+      "answerable_f1": 0.185,
+      "no_answer_accuracy": 0.333,
+      "answerable": 43,
+      "no_answer": 9
+    },
+    "style=legal": {
+      "questions": 31,
+      "exact_match": 0.097,
+      "f1": 0.189,
+      "answerable_f1": 0.13,
+      "no_answer_accuracy": 0.333,
+      "answerable": 22,
+      "no_answer": 9
+    },
+    "style=plain": {
+      "questions": 103,
+      "exact_match": 0.252,
+      "f1": 0.438,
+      "answerable_f1": 0.438,
+      "no_answer_accuracy": 0.0,
+      "answerable": 103,
+      "no_answer": 0
+    },
+    "level=beginner": {
+      "questions": 31,
+      "exact_match": 0.097,
+      "f1": 0.245,
+      "answerable_f1": 0.223,
+      "no_answer_accuracy": 0.333,
+      "answerable": 25,
+      "no_answer": 6
+    },
+    "level=detailed": {
+      "questions": 21,
+      "exact_match": 0.048,
+      "f1": 0.161,
+      "answerable_f1": 0.133,
+      "no_answer_accuracy": 0.333,
+      "answerable": 18,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 82,
+      "exact_match": 0.305,
+      "f1": 0.488,
+      "answerable_f1": 0.488,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    }
+  },
+  "test/end_to_end_default_threshold": {
+    "all": {
+      "questions": 134,
+      "exact_match": 0.216,
+      "f1": 0.358,
+      "answerable_f1": 0.36,
+      "no_answer_accuracy": 0.333,
+      "answerable": 125,
+      "no_answer": 9
+    },
+    "origin=faq_rule": {
+      "questions": 82,
+      "exact_match": 0.305,
+      "f1": 0.473,
+      "answerable_f1": 0.473,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    },
+    "origin=own": {
+      "questions": 52,
+      "exact_match": 0.077,
+      "f1": 0.176,
+      "answerable_f1": 0.143,
+      "no_answer_accuracy": 0.333,
+      "answerable": 43,
+      "no_answer": 9
+    },
+    "style=legal": {
+      "questions": 31,
+      "exact_match": 0.097,
+      "f1": 0.174,
+      "answerable_f1": 0.109,
+      "no_answer_accuracy": 0.333,
+      "answerable": 22,
+      "no_answer": 9
+    },
+    "style=plain": {
+      "questions": 103,
+      "exact_match": 0.252,
+      "f1": 0.413,
+      "answerable_f1": 0.413,
+      "no_answer_accuracy": 0.0,
+      "answerable": 103,
+      "no_answer": 0
+    },
+    "level=beginner": {
+      "questions": 31,
+      "exact_match": 0.097,
+      "f1": 0.21,
+      "answerable_f1": 0.18,
+      "no_answer_accuracy": 0.333,
+      "answerable": 25,
+      "no_answer": 6
+    },
+    "level=detailed": {
+      "questions": 21,
+      "exact_match": 0.048,
+      "f1": 0.127,
+      "answerable_f1": 0.092,
+      "no_answer_accuracy": 0.333,
+      "answerable": 18,
+      "no_answer": 3
+    },
+    "level=unlabelled": {
+      "questions": 82,
+      "exact_match": 0.305,
+      "f1": 0.473,
+      "answerable_f1": 0.473,
+      "no_answer_accuracy": 0.0,
+      "answerable": 82,
+      "no_answer": 0
+    }
+  },
+  "out_of_domain": {
+    "refusal_rate": 0.667,
+    "by_distance": {
+      "far": 0.933,
+      "mid": 0.533,
+      "near": 0.533
+    },
+    "wrongly_answered": [
+      {
+        "question": "How do I file my personal income tax returns with FIRS?",
+        "distance": "near",
+        "answer": "3.31 PFCs shall remit all tax deducted to the relevant tax authorities within 21 days following the end of month of deduction and shall also render returns of such remittances to the Commission twice yearly."
+      },
+      {
+        "question": "Can I get a loan from my bank using my salary account?",
+        "distance": "near",
+        "answer": "No. MPP account cannot be used as collateral for a loan."
+      },
+      {
+        "question": "What is the current minimum wage in Nigeria?",
+        "distance": "near",
+        "answer": "Where the RSA balance of a retiree cannot provide a monthly/quarterly pension or annuity of at least one third of the prevailing minimum wage, the retiree shall be allowed to take the entire balance in the RSA en-bloc."
+      },
+      {
+        "question": "Is it safe to keep my savings in crypto?",
+        "distance": "near",
+        "answer": "The scheme is very safe, the custody arrangement ensures separation of functions between PFAs that manage the assets and PFCs that keep them."
+      },
+      {
+        "question": "My salary has not been paid for three months. What can I do?",
+        "distance": "near",
+        "answer": "Yes. An RSA holder who has accessed 25% of his/her RSA balance due to loss of job can access equity contribution for residential mortgage provided he/she is in active service and the 60 months (5 years) of employer and employee's contributions have been remitted into his/her RSA as at the date of application."
+      },
+      {
+        "question": "How much tax should be deducted from my monthly salary?",
+        "distance": "near",
+        "answer": "3.31 PFCs shall remit all tax deducted to the relevant tax authorities within 21 days following the end of month of deduction and shall also render returns of such remittances to the Commission twice yearly."
+      },
+      {
+        "question": "Can my employer deduct money from my salary for a staff loan?",
+        "distance": "near",
+        "answer": "An employer can make all the contributions on behalf of the employee without making any deduction from the employee\u2019s salary except that such contribution by the employer shall not be less than 20% of the monthly emoluments of the employee."
+      },
+      {
+        "question": "How do I renew my Nigerian international passport?",
+        "distance": "mid",
+        "answer": "The valid International Passport, shall have a validity of not less than 6 months. iv. Introduction letter from the Embassy/Consulate of the applicant; - stating that he/she is a Nationality of the Country. v. Application letter to participate in the scheme to be signed by the employee. vi. Termination Letter from Employer; - Stating the end of contract as well as the evidence of relocation to his/her country."
+      },
+      {
+        "question": "How much should I pay for school fees in a private secondary school in Lagos?",
+        "distance": "mid",
+        "answer": "6.1 The Administrator shall charge reasonable fees for services rendered under this Agreement in line with the Regulation on Fees Structure approved by the Commission."
+      },
+      {
+        "question": "How do I verify that a land in Abuja has genuine documents?",
+        "distance": "mid",
+        "answer": "5.1.5 The Mortgage Lender shall do its due diligence to ensure that the property has a valuation report."
+      },
+      {
+        "question": "How do I change my name officially after marriage in Nigeria?",
+        "distance": "mid",
+        "answer": "i. Marriage Certificate (only applicable in the case of marriage) ii) Newspaper publication iii) Sworn affidavit (for change of name) iv) Letter of confirmation for change of name from employer (where applicable)."
+      },
+      {
+        "question": "How do I get a driver's licence in Nigeria?",
+        "distance": "mid",
+        "answer": "a) International Passport or any of the following: b) National Driver's License"
+      },
+      {
+        "question": "What documents do I need to start an import business?",
+        "distance": "mid",
+        "answer": "Yes! All you need to do at FCMB Pensions is to send a mail to econtributions@fcmbpensions.com providing the following; Contact Name, Contact Email, Contact Number and Contact address to enable us update your record in our database."
+      },
+      {
+        "question": "How do I apply for a Nigerian government job?",
+        "distance": "mid",
+        "answer": "There is adequate representation of relevant stakeholders in the Board of the National Pension Commission, which comprises of representatives of the Government, Nigeria Labour Congress, the Nigerian Union of Pensioners and the Nigerian Employers\u2019 Consultative Association."
+      },
+      {
+        "question": "Will it rain in Lagos tomorrow?",
+        "distance": "far",
+        "answer": "There is no stipulated minimum amount of contribution under the MPP because it is dependent on the Contributor\u2019s pension aspiration and financial capacity."
+      }
+    ]
+  },
+  "out_of_domain_default_threshold": {
+    "refusal_rate": 0.889,
+    "by_distance": {
+      "far": 1.0,
+      "mid": 0.933,
+      "near": 0.733
+    },
+    "wrongly_answered": [
+      {
+        "question": "Can I get a loan from my bank using my salary account?",
+        "distance": "near",
+        "answer": "No. MPP account cannot be used as collateral for a loan."
+      },
+      {
+        "question": "What is the current minimum wage in Nigeria?",
+        "distance": "near",
+        "answer": "Where the RSA balance of a retiree cannot provide a monthly/quarterly pension or annuity of at least one third of the prevailing minimum wage, the retiree shall be allowed to take the entire balance in the RSA en-bloc."
+      },
+      {
+        "question": "Is it safe to keep my savings in crypto?",
+        "distance": "near",
+        "answer": "The scheme is very safe, the custody arrangement ensures separation of functions between PFAs that manage the assets and PFCs that keep them."
+      },
+      {
+        "question": "Can my employer deduct money from my salary for a staff loan?",
+        "distance": "near",
+        "answer": "An employer can make all the contributions on behalf of the employee without making any deduction from the employee\u2019s salary except that such contribution by the employer shall not be less than 20% of the monthly emoluments of the employee."
+      },
+      {
+        "question": "How do I verify that a land in Abuja has genuine documents?",
+        "distance": "mid",
+        "answer": "5.1.5 The Mortgage Lender shall do its due diligence to ensure that the property has a valuation report."
+      }
+    ]
+  }
+}

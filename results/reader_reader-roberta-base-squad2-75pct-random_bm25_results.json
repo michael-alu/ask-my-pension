@@ -1,5 +1,5 @@
 {
-  "reader": "models/reader-roberta-base-squad2-75pct",
+  "reader": "models/reader-roberta-base-squad2-75pct-random",
   "retriever": "bm25",
   "tuned_threshold": 0.0,
   "validation/gold_passage": {
