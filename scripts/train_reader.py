@@ -5,9 +5,16 @@ The model reads a question and a passage, and predicts the start and end of the 
 Predicting the very first token (<s>) for both means "no answer".
 
 No-answer examples: the train split has none, and a model that never sees one learns to always
-answer. So every second training question is also paired with a random passage from a different
-source document, where its answer cannot be. About a third of the examples are then no-answer,
-close to the mix in SQuAD 2.0. These still use only real questions and real passages.
+answer. So every second training question is also paired with a passage from a different source
+document, where its answer cannot be. About a third of the examples are then no-answer, close to
+the mix in SQuAD 2.0. These still use only real questions and real passages.
+
+How that passage is chosen matters (the last argument):
+- "matched" (default): a passage of the SAME style (plain or legal) as the question's own
+  passage, which shares at most one key word with the question.
+- "random": any passage from another source. This taught the model a shortcut: almost every
+  answerable example was plain and 83% of no-answer examples were legal, so it learned
+  "legal text means no answer" and refused 73% of answerable legal questions.
 
 Long passages are cut into overlapping windows of 384 tokens. A window that shows only part of
 an answer is skipped, so the model never learns that a half-visible answer means "no answer".
@@ -15,14 +22,15 @@ an answer is skipped, so the model never learns that a half-visible answer means
 Training uses an NVIDIA GPU when there is one (like on Colab), and the CPU otherwise.
 
 Run from the project root, after export_squad.py. Arguments are optional:
-    python scripts/train_reader.py <base model> <share of training data> <epochs>
-    python scripts/train_reader.py deepset/roberta-base-squad2 1.0 2
+    python scripts/train_reader.py <base model> <share of training data> <epochs> <no-answer passages>
+    python scripts/train_reader.py deepset/roberta-base-squad2 1.0 2 matched
 
-Saves the model to models/reader-<base model>-<percent>pct.
+Saves the model to models/reader-<base model>-<percent>pct-<matched or random>.
 """
 
 import json
 import random
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -51,6 +59,9 @@ BATCH_SIZE = 16
 
 LEARNING_RATE = 3e-5
 
+COMMON_WORDS = {"what", "when", "where", "which", "does", "should", "would", "could", "will", "have", "with",
+                "this", "that", "there", "from", "your", "they", "their", "about", "into", "under", "shall"}
+
 
 def read_examples() -> list[SquadExample]:
     with open(TRAIN_FILE, encoding="utf-8") as file:
@@ -76,7 +87,26 @@ def no_answer_copy(example: SquadExample, other_passage: Passage) -> SquadExampl
     }
 
 
-def add_no_answer_examples(examples: list[SquadExample], rng: random.Random) -> list[SquadExample]:
+def key_words(text: str) -> set[str]:
+    """Words of four letters or more, which carry the meaning, unlike "the" or "and"."""
+    return set(re.findall(r"[a-z]{4,}", text.lower())) - COMMON_WORDS
+
+
+def can_be_no_answer(passage: Passage, example: SquadExample, strategy: str) -> bool:
+    if passage["source_id"] == source_of(example["passage_id"]):
+        return False
+
+    if strategy == "random":
+        return True
+
+    same_style = passage["style"] == example["style"]
+
+    shared_key_words = key_words(example["question"]) & key_words(passage["text"])
+
+    return same_style and len(shared_key_words) <= 1
+
+
+def add_no_answer_examples(examples: list[SquadExample], rng: random.Random, strategy: str) -> list[SquadExample]:
     all_passages = load_searchable_passages()
 
     with_no_answer = list(examples)
@@ -85,11 +115,10 @@ def add_no_answer_examples(examples: list[SquadExample], rng: random.Random) -> 
         if position % 2 != 0:
             continue
 
-        own_source = source_of(example["passage_id"])
+        candidates = [p for p in all_passages if can_be_no_answer(p, example, strategy)]
 
-        other_passages = [p for p in all_passages if p["source_id"] != own_source]
-
-        with_no_answer.append(no_answer_copy(example, rng.choice(other_passages)))
+        if candidates:
+            with_no_answer.append(no_answer_copy(example, rng.choice(candidates)))
 
     return with_no_answer
 
@@ -161,9 +190,11 @@ def main() -> None:
 
     epochs = int(sys.argv[3]) if len(sys.argv) > 3 else 2
 
+    strategy = sys.argv[4] if len(sys.argv) > 4 else "matched"
+
     short_name = base_model.rstrip("/").split("/")[-1]
 
-    output_folder = MODELS_FOLDER / f"reader-{short_name}-{round(share * 100)}pct"
+    output_folder = MODELS_FOLDER / f"reader-{short_name}-{round(share * 100)}pct-{strategy}"
 
     rng = random.Random(SEED)
 
@@ -173,7 +204,7 @@ def main() -> None:
 
     examples = examples[: round(len(examples) * share)]
 
-    examples = add_no_answer_examples(examples, rng)
+    examples = add_no_answer_examples(examples, rng, strategy)
 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
 

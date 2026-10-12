@@ -202,6 +202,13 @@ fine-tunes both retrievers (`scripts/train_retriever.py`) and both readers
 (`scripts/train_reader.py`), evaluates every combination, repeats training on 25%,
 50% and 75% of the data, and gives back `results.zip` to copy into `results/`.
 
+The reader learns "no answer" from training questions paired with passages from
+other documents. How those passages are chosen is itself an experiment. `random`
+picks any passage, which taught the reader a shortcut: nearly every answerable
+example was plain text and most no-answer passages were legal, so it learned that
+legal text means "no answer". `matched` (the default) picks a passage of the same
+style that shares at most one key word with the question, which removes the shortcut.
+
 _Later steps not written yet._
 
 ## Dataset
