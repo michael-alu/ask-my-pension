@@ -6,8 +6,8 @@
     "all": {
       "questions": 75,
       "exact_match": 0.013,
-      "f1": 0.27,
-      "answerable_f1": 0.271,
+      "f1": 0.36,
+      "answerable_f1": 0.367,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -15,8 +15,8 @@
     "origin=faq_rule": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.266,
-      "answerable_f1": 0.266,
+      "f1": 0.36,
+      "answerable_f1": 0.36,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -24,8 +24,8 @@
     "origin=own": {
       "questions": 9,
       "exact_match": 0.111,
-      "f1": 0.304,
-      "answerable_f1": 0.347,
+      "f1": 0.364,
+      "answerable_f1": 0.455,
       "no_answer_accuracy": 0.25,
       "answerable": 5,
       "no_answer": 4
@@ -33,8 +33,8 @@
     "style=plain": {
       "questions": 75,
       "exact_match": 0.013,
-      "f1": 0.27,
-      "answerable_f1": 0.271,
+      "f1": 0.36,
+      "answerable_f1": 0.367,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -51,8 +51,8 @@
     "level=detailed": {
       "questions": 5,
       "exact_match": 0.2,
-      "f1": 0.277,
-      "answerable_f1": 0.193,
+      "f1": 0.386,
+      "answerable_f1": 0.464,
       "no_answer_accuracy": 0.333,
       "answerable": 2,
       "no_answer": 3
@@ -60,8 +60,8 @@
     "level=unlabelled": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.266,
-      "answerable_f1": 0.266,
+      "f1": 0.36,
+      "answerable_f1": 0.36,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -71,8 +71,8 @@
     "all": {
       "questions": 75,
       "exact_match": 0.0,
-      "f1": 0.159,
-      "answerable_f1": 0.168,
+      "f1": 0.216,
+      "answerable_f1": 0.228,
       "no_answer_accuracy": 0.0,
       "answerable": 71,
       "no_answer": 4
@@ -80,8 +80,8 @@
     "origin=faq_rule": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.171,
-      "answerable_f1": 0.171,
+      "f1": 0.232,
+      "answerable_f1": 0.232,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -89,8 +89,8 @@
     "origin=own": {
       "questions": 9,
       "exact_match": 0.0,
-      "f1": 0.076,
-      "answerable_f1": 0.137,
+      "f1": 0.092,
+      "answerable_f1": 0.166,
       "no_answer_accuracy": 0.0,
       "answerable": 5,
       "no_answer": 4
@@ -98,8 +98,8 @@
     "style=plain": {
       "questions": 75,
       "exact_match": 0.0,
-      "f1": 0.159,
-      "answerable_f1": 0.168,
+      "f1": 0.216,
+      "answerable_f1": 0.228,
       "no_answer_accuracy": 0.0,
       "answerable": 71,
       "no_answer": 4
@@ -116,8 +116,8 @@
     "level=detailed": {
       "questions": 5,
       "exact_match": 0.0,
-      "f1": 0.101,
-      "answerable_f1": 0.253,
+      "f1": 0.13,
+      "answerable_f1": 0.326,
       "no_answer_accuracy": 0.0,
       "answerable": 2,
       "no_answer": 3
@@ -125,8 +125,8 @@
     "level=unlabelled": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.171,
-      "answerable_f1": 0.171,
+      "f1": 0.232,
+      "answerable_f1": 0.232,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -136,8 +136,8 @@
     "all": {
       "questions": 75,
       "exact_match": 0.013,
-      "f1": 0.138,
-      "answerable_f1": 0.132,
+      "f1": 0.194,
+      "answerable_f1": 0.191,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -145,8 +145,8 @@
     "origin=faq_rule": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.136,
-      "answerable_f1": 0.136,
+      "f1": 0.199,
+      "answerable_f1": 0.199,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -154,8 +154,8 @@
     "origin=own": {
       "questions": 9,
       "exact_match": 0.111,
-      "f1": 0.154,
-      "answerable_f1": 0.077,
+      "f1": 0.159,
+      "answerable_f1": 0.087,
       "no_answer_accuracy": 0.25,
       "answerable": 5,
       "no_answer": 4
@@ -163,8 +163,8 @@
     "style=plain": {
       "questions": 75,
       "exact_match": 0.013,
-      "f1": 0.138,
-      "answerable_f1": 0.132,
+      "f1": 0.194,
+      "answerable_f1": 0.191,
       "no_answer_accuracy": 0.25,
       "answerable": 71,
       "no_answer": 4
@@ -181,8 +181,8 @@
     "level=detailed": {
       "questions": 5,
       "exact_match": 0.2,
-      "f1": 0.241,
-      "answerable_f1": 0.103,
+      "f1": 0.251,
+      "answerable_f1": 0.129,
       "no_answer_accuracy": 0.333,
       "answerable": 2,
       "no_answer": 3
@@ -190,8 +190,8 @@
     "level=unlabelled": {
       "questions": 66,
       "exact_match": 0.0,
-      "f1": 0.136,
-      "answerable_f1": 0.136,
+      "f1": 0.199,
+      "answerable_f1": 0.199,
       "no_answer_accuracy": 0.0,
       "answerable": 66,
       "no_answer": 0
@@ -200,54 +200,54 @@
   "test/gold_passage": {
     "all": {
       "questions": 134,
-      "exact_match": 0.037,
-      "f1": 0.302,
-      "answerable_f1": 0.292,
+      "exact_match": 0.06,
+      "f1": 0.403,
+      "answerable_f1": 0.4,
       "no_answer_accuracy": 0.444,
       "answerable": 125,
       "no_answer": 9
     },
     "origin=faq_rule": {
       "questions": 82,
-      "exact_match": 0.0,
-      "f1": 0.304,
-      "answerable_f1": 0.304,
+      "exact_match": 0.012,
+      "f1": 0.401,
+      "answerable_f1": 0.401,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
     },
     "origin=own": {
       "questions": 52,
-      "exact_match": 0.096,
-      "f1": 0.3,
-      "answerable_f1": 0.27,
+      "exact_match": 0.135,
+      "f1": 0.405,
+      "answerable_f1": 0.397,
       "no_answer_accuracy": 0.444,
       "answerable": 43,
       "no_answer": 9
     },
     "style=legal": {
       "questions": 31,
-      "exact_match": 0.161,
-      "f1": 0.316,
-      "answerable_f1": 0.263,
+      "exact_match": 0.194,
+      "f1": 0.438,
+      "answerable_f1": 0.435,
       "no_answer_accuracy": 0.444,
       "answerable": 22,
       "no_answer": 9
     },
     "style=plain": {
       "questions": 103,
-      "exact_match": 0.0,
-      "f1": 0.298,
-      "answerable_f1": 0.298,
+      "exact_match": 0.019,
+      "f1": 0.392,
+      "answerable_f1": 0.392,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
     },
     "level=beginner": {
       "questions": 31,
-      "exact_match": 0.129,
-      "f1": 0.347,
-      "answerable_f1": 0.311,
+      "exact_match": 0.194,
+      "f1": 0.425,
+      "answerable_f1": 0.407,
       "no_answer_accuracy": 0.5,
       "answerable": 25,
       "no_answer": 6
@@ -255,17 +255,17 @@
     "level=detailed": {
       "questions": 21,
       "exact_match": 0.048,
-      "f1": 0.231,
-      "answerable_f1": 0.214,
+      "f1": 0.375,
+      "answerable_f1": 0.383,
       "no_answer_accuracy": 0.333,
       "answerable": 18,
       "no_answer": 3
     },
     "level=unlabelled": {
       "questions": 82,
-      "exact_match": 0.0,
-      "f1": 0.304,
-      "answerable_f1": 0.304,
+      "exact_match": 0.012,
+      "f1": 0.401,
+      "answerable_f1": 0.401,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -275,8 +275,8 @@
     "all": {
       "questions": 134,
       "exact_match": 0.007,
-      "f1": 0.157,
-      "answerable_f1": 0.16,
+      "f1": 0.19,
+      "answerable_f1": 0.196,
       "no_answer_accuracy": 0.111,
       "answerable": 125,
       "no_answer": 9
@@ -284,8 +284,8 @@
     "origin=faq_rule": {
       "questions": 82,
       "exact_match": 0.0,
-      "f1": 0.187,
-      "answerable_f1": 0.187,
+      "f1": 0.224,
+      "answerable_f1": 0.224,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -293,8 +293,8 @@
     "origin=own": {
       "questions": 52,
       "exact_match": 0.019,
-      "f1": 0.109,
-      "answerable_f1": 0.109,
+      "f1": 0.136,
+      "answerable_f1": 0.141,
       "no_answer_accuracy": 0.111,
       "answerable": 43,
       "no_answer": 9
@@ -302,8 +302,8 @@
     "style=legal": {
       "questions": 31,
       "exact_match": 0.032,
-      "f1": 0.066,
-      "answerable_f1": 0.047,
+      "f1": 0.098,
+      "answerable_f1": 0.092,
       "no_answer_accuracy": 0.111,
       "answerable": 22,
       "no_answer": 9
@@ -311,8 +311,8 @@
     "style=plain": {
       "questions": 103,
       "exact_match": 0.0,
-      "f1": 0.184,
-      "answerable_f1": 0.184,
+      "f1": 0.218,
+      "answerable_f1": 0.218,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
@@ -320,8 +320,8 @@
     "level=beginner": {
       "questions": 31,
       "exact_match": 0.032,
-      "f1": 0.145,
-      "answerable_f1": 0.14,
+      "f1": 0.17,
+      "answerable_f1": 0.171,
       "no_answer_accuracy": 0.167,
       "answerable": 25,
       "no_answer": 6
@@ -329,8 +329,8 @@
     "level=detailed": {
       "questions": 21,
       "exact_match": 0.0,
-      "f1": 0.056,
-      "answerable_f1": 0.065,
+      "f1": 0.085,
+      "answerable_f1": 0.099,
       "no_answer_accuracy": 0.0,
       "answerable": 18,
       "no_answer": 3
@@ -338,8 +338,8 @@
     "level=unlabelled": {
       "questions": 82,
       "exact_match": 0.0,
-      "f1": 0.187,
-      "answerable_f1": 0.187,
+      "f1": 0.224,
+      "answerable_f1": 0.224,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -349,8 +349,8 @@
     "all": {
       "questions": 134,
       "exact_match": 0.03,
-      "f1": 0.153,
-      "answerable_f1": 0.132,
+      "f1": 0.183,
+      "answerable_f1": 0.164,
       "no_answer_accuracy": 0.444,
       "answerable": 125,
       "no_answer": 9
@@ -358,8 +358,8 @@
     "origin=faq_rule": {
       "questions": 82,
       "exact_match": 0.0,
-      "f1": 0.172,
-      "answerable_f1": 0.172,
+      "f1": 0.206,
+      "answerable_f1": 0.206,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -367,8 +367,8 @@
     "origin=own": {
       "questions": 52,
       "exact_match": 0.077,
-      "f1": 0.124,
-      "answerable_f1": 0.057,
+      "f1": 0.145,
+      "answerable_f1": 0.083,
       "no_answer_accuracy": 0.444,
       "answerable": 43,
       "no_answer": 9
@@ -376,8 +376,8 @@
     "style=legal": {
       "questions": 31,
       "exact_match": 0.129,
-      "f1": 0.142,
-      "answerable_f1": 0.019,
+      "f1": 0.166,
+      "answerable_f1": 0.052,
       "no_answer_accuracy": 0.444,
       "answerable": 22,
       "no_answer": 9
@@ -385,8 +385,8 @@
     "style=plain": {
       "questions": 103,
       "exact_match": 0.0,
-      "f1": 0.157,
-      "answerable_f1": 0.157,
+      "f1": 0.188,
+      "answerable_f1": 0.188,
       "no_answer_accuracy": 0.0,
       "answerable": 103,
       "no_answer": 0
@@ -394,8 +394,8 @@
     "level=beginner": {
       "questions": 31,
       "exact_match": 0.097,
-      "f1": 0.158,
-      "answerable_f1": 0.075,
+      "f1": 0.18,
+      "answerable_f1": 0.103,
       "no_answer_accuracy": 0.5,
       "answerable": 25,
       "no_answer": 6
@@ -403,8 +403,8 @@
     "level=detailed": {
       "questions": 21,
       "exact_match": 0.048,
-      "f1": 0.074,
-      "answerable_f1": 0.031,
+      "f1": 0.094,
+      "answerable_f1": 0.054,
       "no_answer_accuracy": 0.333,
       "answerable": 18,
       "no_answer": 3
@@ -412,8 +412,8 @@
     "level=unlabelled": {
       "questions": 82,
       "exact_match": 0.0,
-      "f1": 0.172,
-      "answerable_f1": 0.172,
+      "f1": 0.206,
+      "answerable_f1": 0.206,
       "no_answer_accuracy": 0.0,
       "answerable": 82,
       "no_answer": 0
@@ -430,7 +430,7 @@
       {
         "question": "How do I file my personal income tax returns with FIRS?",
         "distance": "near",
-        "answer": "render returns of such remittances to the Commission twice yearly"
+        "answer": "remit all tax deducted to the relevant tax authorities within 21 days following the end of month of deduction and shall also render returns of such remittances to the Commission twice yearly"
       },
       {
         "question": "Can I get a loan from my bank using my salary account?",
@@ -460,7 +460,7 @@
       {
         "question": "Is it safe to keep my savings in crypto?",
         "distance": "near",
-        "answer": "the Government is primarily concerned with ensuring the safety"
+        "answer": "The Government cannot tamper with the pension funds in your RSA, because the Government cannot have access to the account. Besides, the Government is primarily concerned with ensuring the safety of the money in your RSA through the enforcement of strict rules and regulations"
       },
       {
         "question": "Which savings app gives the highest interest in Nigeria?",
@@ -475,7 +475,7 @@
       {
         "question": "What is the difference between a current account and a savings account?",
         "distance": "near",
-        "answer": "any savings made under the Plan can only be withdrawn as monthly pension after retirement"
+        "answer": "MPP is different from savings account maintained with a commercial bank because any savings made under the Plan can only be withdrawn as monthly pension after retirement, except the Contingent portion of the contribution"
       },
       {
         "question": "How much tax should be deducted from my monthly salary?",
@@ -485,7 +485,7 @@
       {
         "question": "Can my employer deduct money from my salary for a staff loan?",
         "distance": "near",
-        "answer": "without making any deduction from the employee\u2019s salary"
+        "answer": "An employer can make all the contributions on behalf of the employee without making any deduction from the employee\u2019s salary"
       },
       {
         "question": "How do I renew my Nigerian international passport?",
@@ -510,7 +510,7 @@
       {
         "question": "How do I apply for a UK work visa from Nigeria?",
         "distance": "mid",
-        "answer": "International Passport"
+        "answer": "Employment letter in Nigeria. ii. Valid Green Card issued by Nigerian Immigration Service; - The card is valid for two years\u2019 period and renewable, therefore, the applicant shall provide the valid card within the two years\u2019 validity period. iii. International Passport"
       },
       {
         "question": "How do I verify that a land in Abuja has genuine documents?",
@@ -540,7 +540,7 @@
       {
         "question": "How do I apply for a Nigerian government job?",
         "distance": "mid",
-        "answer": "stipulated tenor"
+        "answer": "Any person who is appointed by the President of the Federal Republic of Nigeria, State Government and elected officers to hold office for a stipulated tenor"
       },
       {
         "question": "How do I get a certificate of occupancy for my house?",
@@ -605,7 +605,7 @@
       {
         "question": "How do I apply for a Nigerian government job?",
         "distance": "mid",
-        "answer": "stipulated tenor"
+        "answer": "Any person who is appointed by the President of the Federal Republic of Nigeria, State Government and elected officers to hold office for a stipulated tenor"
       },
       {
         "question": "Which Nollywood movie is trending this week?",
