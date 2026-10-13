@@ -35,3 +35,6 @@ data/squad/
 
 # Downloads from Colab (results and models are unzipped into the repo instead)
 *.zip
+
+# The folder uploaded to Hugging Face Spaces, rebuilt by scripts/prepare_space.py
+space/

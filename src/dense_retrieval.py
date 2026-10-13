@@ -23,13 +23,22 @@ def embed(model: SentenceTransformer, texts: list[str]) -> np.ndarray:
     return embeddings
 
 
-def search_dense(
+def search_dense_scored(
     model: SentenceTransformer, passage_embeddings: np.ndarray, passages: list[Passage], question: str, top_k: int
-) -> list[str]:
+) -> list[tuple[str, float]]:
+    """The top_k passage ids, best first, each with its similarity to the question (1 is identical)."""
     question_embedding = embed(model, [question])[0]
 
     similarities = passage_embeddings @ question_embedding
 
     best_positions = np.argsort(-similarities)[:top_k]
 
-    return [passages[position]["passage_id"] for position in best_positions]
+    return [(passages[position]["passage_id"], float(similarities[position])) for position in best_positions]
+
+
+def search_dense(
+    model: SentenceTransformer, passage_embeddings: np.ndarray, passages: list[Passage], question: str, top_k: int
+) -> list[str]:
+    scored = search_dense_scored(model, passage_embeddings, passages, question, top_k)
+
+    return [passage_id for passage_id, _ in scored]
