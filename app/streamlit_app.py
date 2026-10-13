@@ -12,6 +12,7 @@ Run from the project root:
     streamlit run app/streamlit_app.py
 """
 
+import os
 import sys
 import time
 from pathlib import Path
@@ -22,7 +23,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.append(str(PROJECT_ROOT))
 
 from src.answer_pipeline import Answer, System, answer_question, load_system  # noqa: E402
-from src.assets import ensure_assets  # noqa: E402
+from src.assets import ensure_assets, missing_assets  # noqa: E402
 
 TITLE = "Ask My Pension"
 
@@ -54,9 +55,19 @@ EXAMPLES = [
 
 @st.cache_resource(show_spinner="Loading the pension documents and models. The first start takes a minute or two.")
 def get_system() -> System:
+    if missing_assets():
+        copy_secrets_to_environment()
+
     ensure_assets()
 
     return load_system()
+
+
+def copy_secrets_to_environment() -> None:
+    """Streamlit Cloud keeps the settings in st.secrets, and src/assets.py reads them from the environment."""
+    for name in ["HF_ASSETS_REPO", "HF_TOKEN"]:
+        if name in st.secrets:
+            os.environ[name] = str(st.secrets[name])
 
 
 def use_example(example: str) -> None:

@@ -3,6 +3,9 @@ Files the app needs that cannot go in git: the two fine-tuned models (too big), 
 with their saved embeddings (they hold the publishers' text). They live in a private Hugging Face
 model repository and are downloaded the first time the app starts, if they are not already on disk.
 
+If the repository cannot be reached, huggingface_hub does not raise an error. It quietly returns
+the folder as it is. So the files are checked again after downloading.
+
 Two settings are needed, as Streamlit secrets or environment variables:
 - HF_ASSETS_REPO: the repository, like "michael-alu/ask-my-pension-assets"
 - HF_TOKEN: a Hugging Face token that can read it
@@ -38,3 +41,11 @@ def ensure_assets() -> None:
         raise RuntimeError(f"Missing {missing_assets()} and HF_ASSETS_REPO is not set, so they cannot be downloaded.")
 
     snapshot_download(repo_id=repo, repo_type="model", token=os.environ.get("HF_TOKEN"), local_dir=PROJECT_ROOT)
+
+    still_missing = missing_assets()
+
+    if still_missing:
+        raise RuntimeError(
+            f"Could not download {still_missing} from {repo}. Check that HF_ASSETS_REPO is spelled correctly, "
+            "that HF_TOKEN can read it, and that the upload finished."
+        )
