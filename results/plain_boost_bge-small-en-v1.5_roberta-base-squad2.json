@@ -1,0 +1,361 @@
+{
+  "retriever": "BAAI/bge-small-en-v1.5",
+  "reader": "deepset/roberta-base-squad2",
+  "threshold": -0.8,
+  "boosts": {
+    "0.0": {
+      "retrieval": {
+        "all": {
+          "questions": 125,
+          "recall_at_1": 0.352,
+          "recall_at_5": 0.568,
+          "mrr_at_10": 0.442,
+          "top1_reading_ease": 34.8
+        },
+        "origin=faq": {
+          "questions": 82,
+          "recall_at_1": 0.402,
+          "recall_at_5": 0.683,
+          "mrr_at_10": 0.52,
+          "top1_reading_ease": 35.4
+        },
+        "origin=own": {
+          "questions": 43,
+          "recall_at_1": 0.256,
+          "recall_at_5": 0.349,
+          "mrr_at_10": 0.292,
+          "top1_reading_ease": 33.7
+        },
+        "style=plain": {
+          "questions": 103,
+          "recall_at_1": 0.398,
+          "recall_at_5": 0.631,
+          "mrr_at_10": 0.496,
+          "top1_reading_ease": 35.6
+        },
+        "style=legal": {
+          "questions": 22,
+          "recall_at_1": 0.136,
+          "recall_at_5": 0.273,
+          "mrr_at_10": 0.185,
+          "top1_reading_ease": 31.2
+        }
+      },
+      "end_to_end": {
+        "questions": 134,
+        "exact_match": 0.007,
+        "f1": 0.19,
+        "answerable_f1": 0.196,
+        "no_answer_accuracy": 0.111,
+        "answerable": 125,
+        "no_answer": 9
+      },
+      "end_to_end_own": {
+        "questions": 52,
+        "exact_match": 0.019,
+        "f1": 0.136,
+        "answerable_f1": 0.141,
+        "no_answer_accuracy": 0.111,
+        "answerable": 43,
+        "no_answer": 9
+      },
+      "answer_passage_reading_ease": 36.1,
+      "answers_from_plain_passages": 0.869
+    },
+    "0.01": {
+      "retrieval": {
+        "all": {
+          "questions": 125,
+          "recall_at_1": 0.352,
+          "recall_at_5": 0.56,
+          "mrr_at_10": 0.451,
+          "top1_reading_ease": 35.6
+        },
+        "origin=faq": {
+          "questions": 82,
+          "recall_at_1": 0.415,
+          "recall_at_5": 0.695,
+          "mrr_at_10": 0.543,
+          "top1_reading_ease": 36.2
+        },
+        "origin=own": {
+          "questions": 43,
+          "recall_at_1": 0.233,
+          "recall_at_5": 0.302,
+          "mrr_at_10": 0.276,
+          "top1_reading_ease": 34.6
+        },
+        "style=plain": {
+          "questions": 103,
+          "recall_at_1": 0.408,
+          "recall_at_5": 0.641,
+          "mrr_at_10": 0.515,
+          "top1_reading_ease": 36.4
+        },
+        "style=legal": {
+          "questions": 22,
+          "recall_at_1": 0.091,
+          "recall_at_5": 0.182,
+          "mrr_at_10": 0.152,
+          "top1_reading_ease": 32.0
+        }
+      },
+      "end_to_end": {
+        "questions": 134,
+        "exact_match": 0.007,
+        "f1": 0.192,
+        "answerable_f1": 0.198,
+        "no_answer_accuracy": 0.111,
+        "answerable": 125,
+        "no_answer": 9
+      },
+      "end_to_end_own": {
+        "questions": 52,
+        "exact_match": 0.019,
+        "f1": 0.137,
+        "answerable_f1": 0.143,
+        "no_answer_accuracy": 0.111,
+        "answerable": 43,
+        "no_answer": 9
+      },
+      "answer_passage_reading_ease": 36.4,
+      "answers_from_plain_passages": 0.899
+    },
+    "0.02": {
+      "retrieval": {
+        "all": {
+          "questions": 125,
+          "recall_at_1": 0.36,
+          "recall_at_5": 0.56,
+          "mrr_at_10": 0.453,
+          "top1_reading_ease": 35.6
+        },
+        "origin=faq": {
+          "questions": 82,
+          "recall_at_1": 0.439,
+          "recall_at_5": 0.695,
+          "mrr_at_10": 0.557,
+          "top1_reading_ease": 36.0
+        },
+        "origin=own": {
+          "questions": 43,
+          "recall_at_1": 0.209,
+          "recall_at_5": 0.302,
+          "mrr_at_10": 0.256,
+          "top1_reading_ease": 34.9
+        },
+        "style=plain": {
+          "questions": 103,
+          "recall_at_1": 0.427,
+          "recall_at_5": 0.641,
+          "mrr_at_10": 0.528,
+          "top1_reading_ease": 36.3
+        },
+        "style=legal": {
+          "questions": 22,
+          "recall_at_1": 0.045,
+          "recall_at_5": 0.182,
+          "mrr_at_10": 0.106,
+          "top1_reading_ease": 32.5
+        }
+      },
+      "end_to_end": {
+        "questions": 134,
+        "exact_match": 0.007,
+        "f1": 0.192,
+        "answerable_f1": 0.197,
+        "no_answer_accuracy": 0.111,
+        "answerable": 125,
+        "no_answer": 9
+      },
+      "end_to_end_own": {
+        "questions": 52,
+        "exact_match": 0.019,
+        "f1": 0.138,
+        "answerable_f1": 0.144,
+        "no_answer_accuracy": 0.111,
+        "answerable": 43,
+        "no_answer": 9
+      },
+      "answer_passage_reading_ease": 36.5,
+      "answers_from_plain_passages": 0.915
+    },
+    "0.03": {
+      "retrieval": {
+        "all": {
+          "questions": 125,
+          "recall_at_1": 0.36,
+          "recall_at_5": 0.56,
+          "mrr_at_10": 0.459,
+          "top1_reading_ease": 35.8
+        },
+        "origin=faq": {
+          "questions": 82,
+          "recall_at_1": 0.439,
+          "recall_at_5": 0.695,
+          "mrr_at_10": 0.566,
+          "top1_reading_ease": 36.1
+        },
+        "origin=own": {
+          "questions": 43,
+          "recall_at_1": 0.209,
+          "recall_at_5": 0.302,
+          "mrr_at_10": 0.253,
+          "top1_reading_ease": 35.3
+        },
+        "style=plain": {
+          "questions": 103,
+          "recall_at_1": 0.427,
+          "recall_at_5": 0.641,
+          "mrr_at_10": 0.535,
+          "top1_reading_ease": 36.5
+        },
+        "style=legal": {
+          "questions": 22,
+          "recall_at_1": 0.045,
+          "recall_at_5": 0.182,
+          "mrr_at_10": 0.1,
+          "top1_reading_ease": 32.5
+        }
+      },
+      "end_to_end": {
+        "questions": 134,
+        "exact_match": 0.007,
+        "f1": 0.192,
+        "answerable_f1": 0.197,
+        "no_answer_accuracy": 0.111,
+        "answerable": 125,
+        "no_answer": 9
+      },
+      "end_to_end_own": {
+        "questions": 52,
+        "exact_match": 0.019,
+        "f1": 0.138,
+        "answerable_f1": 0.144,
+        "no_answer_accuracy": 0.111,
+        "answerable": 43,
+        "no_answer": 9
+      },
+      "answer_passage_reading_ease": 36.1,
+      "answers_from_plain_passages": 0.922
+    },
+    "0.05": {
+      "retrieval": {
+        "all": {
+          "questions": 125,
+          "recall_at_1": 0.368,
+          "recall_at_5": 0.56,
+          "mrr_at_10": 0.46,
+          "top1_reading_ease": 36.2
+        },
+        "origin=faq": {
+          "questions": 82,
+          "recall_at_1": 0.451,
+          "recall_at_5": 0.72,
+          "mrr_at_10": 0.577,
+          "top1_reading_ease": 36.3
+        },
+        "origin=own": {
+          "questions": 43,
+          "recall_at_1": 0.209,
+          "recall_at_5": 0.256,
+          "mrr_at_10": 0.236,
+          "top1_reading_ease": 35.9
+        },
+        "style=plain": {
+          "questions": 103,
+          "recall_at_1": 0.437,
+          "recall_at_5": 0.66,
+          "mrr_at_10": 0.544,
+          "top1_reading_ease": 36.7
+        },
+        "style=legal": {
+          "questions": 22,
+          "recall_at_1": 0.045,
+          "recall_at_5": 0.091,
+          "mrr_at_10": 0.068,
+          "top1_reading_ease": 33.6
+        }
+      },
+      "end_to_end": {
+        "questions": 134,
+        "exact_match": 0.007,
+        "f1": 0.187,
+        "answerable_f1": 0.192,
+        "no_answer_accuracy": 0.111,
+        "answerable": 125,
+        "no_answer": 9
+      },
+      "end_to_end_own": {
+        "questions": 52,
+        "exact_match": 0.019,
+        "f1": 0.127,
+        "answerable_f1": 0.13,
+        "no_answer_accuracy": 0.111,
+        "answerable": 43,
+        "no_answer": 9
+      },
+      "answer_passage_reading_ease": 35.8,
+      "answers_from_plain_passages": 0.953
+    },
+    "0.1": {
+      "retrieval": {
+        "all": {
+          "questions": 125,
+          "recall_at_1": 0.368,
+          "recall_at_5": 0.56,
+          "mrr_at_10": 0.459,
+          "top1_reading_ease": 36.1
+        },
+        "origin=faq": {
+          "questions": 82,
+          "recall_at_1": 0.463,
+          "recall_at_5": 0.732,
+          "mrr_at_10": 0.586,
+          "top1_reading_ease": 36.3
+        },
+        "origin=own": {
+          "questions": 43,
+          "recall_at_1": 0.186,
+          "recall_at_5": 0.233,
+          "mrr_at_10": 0.216,
+          "top1_reading_ease": 35.9
+        },
+        "style=plain": {
+          "questions": 103,
+          "recall_at_1": 0.447,
+          "recall_at_5": 0.67,
+          "mrr_at_10": 0.551,
+          "top1_reading_ease": 36.7
+        },
+        "style=legal": {
+          "questions": 22,
+          "recall_at_1": 0.0,
+          "recall_at_5": 0.045,
+          "mrr_at_10": 0.028,
+          "top1_reading_ease": 33.6
+        }
+      },
+      "end_to_end": {
+        "questions": 134,
+        "exact_match": 0.007,
+        "f1": 0.186,
+        "answerable_f1": 0.191,
+        "no_answer_accuracy": 0.111,
+        "answerable": 125,
+        "no_answer": 9
+      },
+      "end_to_end_own": {
+        "questions": 52,
+        "exact_match": 0.019,
+        "f1": 0.131,
+        "answerable_f1": 0.135,
+        "no_answer_accuracy": 0.111,
+        "answerable": 43,
+        "no_answer": 9
+      },
+      "answer_passage_reading_ease": 35.9,
+      "answers_from_plain_passages": 0.977
+    }
+  }
+}

@@ -1,0 +1,395 @@
+{
+  "system": "reader_reader-roberta-base-squad2-100pct-matched_retriever-bge-small-en-v1.5-100pct",
+  "test_questions": 134,
+  "counts": {
+    "correct": 43,
+    "retriever missed the gold passage": 39,
+    "gold passage read, answer taken from another": 28,
+    "answered but should have refused": 8,
+    "partly right, too short": 6,
+    "partly right, partial overlap": 4,
+    "refused but answerable": 4,
+    "right passage, wrong span": 1,
+    "correctly refused": 1
+  },
+  "correct_but_hard_to_read": 18,
+  "by_slice": {
+    "origin=faq_rule": {
+      "correct": 35,
+      "gold passage read, answer taken from another": 23,
+      "retriever missed the gold passage": 18,
+      "partly right, partial overlap": 3,
+      "partly right, too short": 2,
+      "right passage, wrong span": 1
+    },
+    "origin=own": {
+      "retriever missed the gold passage": 21,
+      "correct": 8,
+      "answered but should have refused": 8,
+      "gold passage read, answer taken from another": 5,
+      "refused but answerable": 4,
+      "partly right, too short": 4,
+      "partly right, partial overlap": 1,
+      "correctly refused": 1
+    },
+    "style=legal": {
+      "retriever missed the gold passage": 12,
+      "answered but should have refused": 8,
+      "gold passage read, answer taken from another": 3,
+      "refused but answerable": 3,
+      "correct": 2,
+      "partly right, too short": 1,
+      "partly right, partial overlap": 1,
+      "correctly refused": 1
+    },
+    "style=plain": {
+      "correct": 41,
+      "retriever missed the gold passage": 27,
+      "gold passage read, answer taken from another": 25,
+      "partly right, too short": 5,
+      "partly right, partial overlap": 3,
+      "right passage, wrong span": 1,
+      "refused but answerable": 1
+    },
+    "level=beginner": {
+      "retriever missed the gold passage": 10,
+      "correct": 6,
+      "gold passage read, answer taken from another": 5,
+      "answered but should have refused": 5,
+      "refused but answerable": 2,
+      "partly right, too short": 2,
+      "correctly refused": 1
+    },
+    "level=detailed": {
+      "retriever missed the gold passage": 11,
+      "answered but should have refused": 3,
+      "partly right, too short": 2,
+      "correct": 2,
+      "refused but answerable": 2,
+      "partly right, partial overlap": 1
+    },
+    "level=unlabelled": {
+      "correct": 35,
+      "gold passage read, answer taken from another": 23,
+      "retriever missed the gold passage": 18,
+      "partly right, partial overlap": 3,
+      "partly right, too short": 2,
+      "right passage, wrong span": 1
+    }
+  },
+  "out_of_domain_refusal_rate": 0.689,
+  "out_of_domain_by_distance": {
+    "far": 1.0,
+    "mid": 0.467,
+    "near": 0.6
+  },
+  "out_of_domain_answered": [
+    {
+      "question": "Can I get a loan from my bank using my salary account?",
+      "distance": "near",
+      "answer": "No. MPP account cannot be used as collateral for a loan."
+    },
+    {
+      "question": "What is the current minimum wage in Nigeria?",
+      "distance": "near",
+      "answer": "A minimum of 18% of monthly basic salary, housing and transport allowances, with the employer contributing at least 10%."
+    },
+    {
+      "question": "How do I check my BVN on my phone?",
+      "distance": "near",
+      "answer": "Bank Verification Number (BVN): 11-digit number issued by banks to their customers as their universal ID in all commercial banks in Nigeria."
+    },
+    {
+      "question": "What is the difference between a current account and a savings account?",
+      "distance": "near",
+      "answer": "Yes. MPP is different from savings account maintained with a commercial bank because any savings made under the Plan can only be withdrawn as monthly pension after retirement, except the Contingent portion of the contribution."
+    },
+    {
+      "question": "How much tax should be deducted from my monthly salary?",
+      "distance": "near",
+      "answer": "3.29 The tax deductions shall be based on both income earned and principal amount when withdrawal is less than five (5) years for the exempted, foreign, retirees under the defunct DBS and retirees under the CPS."
+    },
+    {
+      "question": "Can my employer deduct money from my salary for a staff loan?",
+      "distance": "near",
+      "answer": "An employer can make all the contributions on behalf of the employee without making any deduction from the employee’s salary except that such contribution by the employer shall not be less than 20% of the monthly emoluments of the employee."
+    },
+    {
+      "question": "How do I renew my Nigerian international passport?",
+      "distance": "mid",
+      "answer": "a) International Passport or any of the following: b) National Driver's License c) Permanent Voter's Card d) National Identity Card or enrolment Slip issued by NIMC e) International Passport (mandatory for Non-Nigerians)."
+    },
+    {
+      "question": "How do I register my small business with CAC?",
+      "distance": "mid",
+      "answer": "To register with us, simply click ENROLL NOW OR download our Retirement Savings Account Form Account Opening Form (RSA) . Fill and walk into our nearest office for submission, view our branch locations via https://www.fcmbpensions."
+    },
+    {
+      "question": "How do I verify that a land in Abuja has genuine documents?",
+      "distance": "mid",
+      "answer": "5.1.4 The Mortgage Lender shall review the application form and verify the genuineness of the property offer."
+    },
+    {
+      "question": "How do I change my name officially after marriage in Nigeria?",
+      "distance": "mid",
+      "answer": "i. Marriage Certificate (only applicable in the case of marriage) ii) Newspaper publication iii) Sworn affidavit (for change of name) iv) Letter of confirmation for change of name from employer (where applicable)."
+    },
+    {
+      "question": "How do I get a driver's licence in Nigeria?",
+      "distance": "mid",
+      "answer": "ii. Staff Identity Card or any of the following a) National Driver's License b) Permanent Voter's Card c) International Passport (mandatory for Non-Nigerians) ii) National Identity Card or Enrolment Slip issued by NIMC iii) Birth Certificate or Sworn Affidavit of Age Declaration iv) Letter of employment."
+    },
+    {
+      "question": "What documents do I need to start an import business?",
+      "distance": "mid",
+      "answer": "a) International Passport or any of the following: b) National Driver's License c) Permanent Voter's Card d) National Identity Card or enrolment Slip issued by NIMC e) International Passport (mandatory for Non-Nigerians)."
+    },
+    {
+      "question": "How do I report a fraud alert on my bank account?",
+      "distance": "mid",
+      "answer": "We send SMS notification on any remittance made into Retirement Savings Accounts as they occur. It may be that your phone number changed and you did not notify us."
+    },
+    {
+      "question": "How do I apply for a Nigerian government job?",
+      "distance": "mid",
+      "answer": "ii. Staff Identity Card or any of the following a) National Driver's License b) Permanent Voter's Card c) International Passport (mandatory for Non-Nigerians) ii) National Identity Card or Enrolment Slip issued by NIMC iii) Birth Certificate or Sworn Affidavit of Age Declaration iv) Letter of employment."
+    }
+  ],
+  "examples": {
+    "correct": [
+      {
+        "question": "Has the MPP been successful in other Countries?",
+        "gold": "Yes, MPP has been successful in countries like Ghana, Kenya, India, etc.",
+        "prediction": "Yes, MPP has been successful in countries like Ghana, Kenya, India, etc.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Can one have more than one RSA under the MPP?",
+        "gold": "No. A contributor under the MPP shall only have one RSA in his/her lifetime.",
+        "prediction": "No. A contributor under the MPP shall only have one RSA in his/her lifetime.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Can an individual in the formal sector who already has an RSA also participate in the MPP?",
+        "gold": "No. An individual who is contributing under the mandatory pension arrangement cannot participate in the MPP.",
+        "prediction": "No. An individual who is contributing under the mandatory pension arrangement cannot participate in the MPP.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "What measures have been put in place by PenCom to safeguard the funds under the MPP?",
+        "gold": "There is effective monitoring and supervision of the MPP funds by PenCom through daily monitoring of the Plan asset and investment decisions made by PFAs to ensure that their decisions are in line with relevant laws and Investment Regulations issued by PenCom.",
+        "prediction": "There is effective monitoring and supervision of the MPP funds by PenCom through daily monitoring of the Plan asset and investment decisions made by PFAs to ensure that their decisions are in line with relevant laws and Investment Regulations issued by PenCom.",
+        "origin": "faq_rule",
+        "style": "plain"
+      }
+    ],
+    "retriever missed the gold passage": [
+      {
+        "question": "Who can participate in the MPP?",
+        "gold": "A Micro Pension participant must: i. Be a Nigerian; ii. Not below 18 years of age; iii. Have a legitimate source of income; iv. Belong to a trade/association/profession; and v. May be self-employed or an employee of an organization with less than three employees with or without a formal employment contract.",
+        "prediction": "No. Retirees from the Formal Sector cannot participate in the MPP. MPP allows participation by the self-employed and person working in organizations with less than 3 employees.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Is there a provision for the guarantee of the safety of assets under the MPP?",
+        "gold": "Yes. The PFC has provided full guarantee of the total pension assets under its custody. Thus, any asset lost will be refunded by the Custodian.",
+        "prediction": "2.8 Protection of Consumer Pension Assets, Data and Privacy The Commission shall ensure that appropriate measures are established to guarantee protection of pension assets.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Would my Contributions under the MPP be subject to any taxes?",
+        "gold": "No. Subject to the provisions of PRA 2014 and extant tax laws, all interests, dividends, profits, investments and other income accrued to Micro Pension Fund and assets are not taxable.",
+        "prediction": "No. MPP only allows for conversion from MPP to mandatory CPS.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Can I decide which financial instruments my Contributions should be invested in?",
+        "gold": "No. Investment decisions are made by the PFAs in line with Investment Regulations issued by PenCom.",
+        "prediction": "PFAs can only invest in the following instruments: Equities; Federal Government Securities; State/Local Government Bonds; Corporate Debt Securities; Money Market Instruments; Open/Closed-end Funds; Infrastructure Bonds & Funds; Private Equity Funds; Supranational bonds and any securities/instruments that may be approved by PenCom, from time to time.",
+        "origin": "faq_rule",
+        "style": "plain"
+      }
+    ],
+    "gold passage read, answer taken from another": [
+      {
+        "question": "Why Micro Pension?",
+        "gold": "Micro Pension guarantees secured future through steady income at retirement. It reduces old age poverty and the process has been made easy, simple and flexible.",
+        "prediction": "Micro Pension Plan: An arrangement under the CPS, which allows the self-employed and persons working in organizations with less than three employees to make voluntary contributions towards provision for retirement.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Is the mandatory CPS different from the MPP?",
+        "gold": "The mandatory pension and MPP are arrangements under the CPS. A major difference between the two is the nature of participation. The mandatory pension is obligatory for all eligible employees and both the employer/employee contribute towards the payment of the employee's pension at retirement. Micro Pension on the other hand is voluntary and solely funded by the contributor.",
+        "prediction": "No. MPP only allows for conversion from MPP to mandatory CPS.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "How do I register/enroll for MPP?",
+        "gold": "A prospective Micro Pension contributor can enroll/register through any PFA of his/her choice, obtain and complete the RSA Opening Form either physically or electronically. A unique Personal Identification Number (PIN) would be issued to the registered contributor by the PFA.",
+        "prediction": "1.6.10 PFAs shall register MPP Contributors in line with the provisions of these Guidelines and the Guidelines for Micro Pension Plan, issued by the Commission.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "Where do I locate the PFA of my choice?",
+        "gold": "The detailed list and addresses of all Licensed PFAs can be accessed via PenCom's website- www.pencom.gov.ng.",
+        "prediction": "5.2.1 PFA shall confirm from its database the existence of the applicants Personal Identification Number (PIN), whether the applicant is on Programmed Withdrawal or Retiree Life Annuity.",
+        "origin": "faq_rule",
+        "style": "plain"
+      }
+    ],
+    "answered but should have refused": [
+      {
+        "question": "Is there a limit to how much extra money I can add to my pension account on my own?",
+        "gold": null,
+        "prediction": "There is no stipulated minimum amount of contribution under the MPP because it is dependent on the Contributor’s pension aspiration and financial capacity.",
+        "origin": "own",
+        "style": "legal"
+      },
+      {
+        "question": "Who can see my details once my pension company sends them to the national database?",
+        "gold": null,
+        "prediction": "Yes, you can view your RSA details online 24/7, simply log on to https://web.fcmbpensions.com/clientportal/Account/Login supply your username and password to begin.",
+        "origin": "own",
+        "style": "legal"
+      },
+      {
+        "question": "Will my pension company charge me to update my phone number and address?",
+        "gold": null,
+        "prediction": "Yes, in accordance with the guidelines of the National Pension Commission. We charge administrative and management fees as stipulated by PenCom.",
+        "origin": "own",
+        "style": "legal"
+      },
+      {
+        "question": "Can I register for my pension account online from my phone, or must I go to the office?",
+        "gold": null,
+        "prediction": "A retiree/prospective retiree who has successfully completed his/her data recapture, can register on the Online Enrolment Application hosted on PenCom's website or visit his/her PFA for assistance on the registration.",
+        "origin": "own",
+        "style": "legal"
+      }
+    ],
+    "partly right, too short": [
+      {
+        "question": "What happens if the Micro Pension Contributor gets a formal employment?",
+        "gold": "The Micro Pension Contributor who secures a formal employment shall notify his/her PFA for conversion into the mandatory pension. The Micro Pension Contributor shall also retain his/her existing RSA to be used for the mandatory pension.",
+        "prediction": "The Micro Pension Contributor who secures a formal employment shall notify his/her PFA for conversion into the mandatory pension.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "WHO IS A CUSTODIAN?",
+        "gold": "A Pension Fund Custodian (PFC) is a company licensed by the National Pension Commission to keep pension money and assets in the RSA on trust for the employee on behalf of the PFA.",
+        "prediction": "Pension Fund Custodian (PFC): A company licensed by National Pension Commission to keep custody of the pension funds and assets in Nigeria.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "I just got my first job. Can I pick any pension company I want, or does my boss choose for me?",
+        "gold": "Employees are at liberty to open an RSA with any PFA of their choice. However, there are exceptions where a State has an arrangement to select a pool of PFAs within the State to manage its pension fund assets.",
+        "prediction": "Employees are at liberty to open an RSA with any PFA of their choice.",
+        "origin": "own",
+        "style": "plain"
+      },
+      {
+        "question": "My company has its own pension company just for its staff. Can I move my pension to a different one I like?",
+        "gold": "Every employee may decide to join the contributory pension scheme or move his RSA from a closed PFA to a PFA of his choice subject to such rules and regulations as may be issued by the National Pension Commission. CAN A SUBSIDIARY COMPANY APPLY AS A CLOSED PFA A subsidiary of any company may apply for licence to operate as a Closed PFA provided it satisfies the requirements of the Pension Reform Act 2014.",
+        "prediction": "Every employee may decide to join the contributory pension scheme or move his RSA from a closed PFA to a PFA of his choice subject to such rules and regulations as may be issued by the National Pension Commission.",
+        "origin": "own",
+        "style": "plain"
+      }
+    ],
+    "partly right, partial overlap": [
+      {
+        "question": "What is Micro Pension Plan (MPP)?",
+        "gold": "MPP refers to an arrangement under the CPS that allows the self employed and persons working in organizations with less than three (3) employees to make financial contributions towards the provision of pension.",
+        "prediction": "Micro Pension Plan: An arrangement under the CPS, which allows the self-employed and persons working in organizations with less than three employees to make voluntary contributions towards provision for retirement.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "What is the minimum amount of contribution acceptable under the MPP?",
+        "gold": "There is no stipulated minimum amount of contribution under the MPP because it is dependent on the Contributor’s pension aspiration and financial capacity. Thus, higher contributions will result in more money available for pension.",
+        "prediction": "There is no stipulated minimum amount of contribution under the MPP because it is dependent on the Contributor’s pension aspiration and financial capacity.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "WHAT IS A RETIREMENT SAVINGS ACCOUNT (RSA)?",
+        "gold": "Every employee or contributor under the new pension scheme is expected to open a RSA in his/her name with any PFA of his/her choice into which all his/her contributions and returns on investment are paid.",
+        "prediction": "Retirement Savings Account (RSA): This is an account opened by an employee with a PFA of his/her choice into which all his/her pension contributions are remitted.",
+        "origin": "faq_rule",
+        "style": "plain"
+      },
+      {
+        "question": "My company registered me for pension when I joined. How will I get proof that I’m registered?",
+        "gold": "In the case of registrations initiated by employers, PFAs shall issue evidence of registration to employees through their employers within 5 working days of receipt of their Temporary PINs from the Commission. Such letters shall contain Name of the Employee, PFA Name, Temporary PIN, Employer Name and Employer Address.",
+        "prediction": "1.6.14 In the case of registrations initiated by employers, PFAs shall issue evidence of registration to employees through their employers within 5 working days of receipt of their Temporary PINs from the Commission.",
+        "origin": "own",
+        "style": "legal"
+      }
+    ],
+    "refused but answerable": [
+      {
+        "question": "A PFA agent told me my current pension company is bad and will lose my money, so I should move to them. Are they even allowed to talk like that?",
+        "gold": "It should be noted that encouraging a free market environment is vital to enhance effective service delivery for consumers. Therefore, Pension Fund Operators should actively promote healthy competition while refraining from unethical and de-marketing practices, ensuring fair and beneficial outcomes for all consumers.",
+        "prediction": "",
+        "origin": "own",
+        "style": "legal"
+      },
+      {
+        "question": "I’m a tailor on micro pension and I need some money urgently. Can I take some out before I retire?",
+        "gold": "A Micro Pension Contributor can withdraw an amount from his/her contingent portion by applying to his/her PFA in a prescribed format.",
+        "prediction": "",
+        "origin": "own",
+        "style": "plain"
+      },
+      {
+        "question": "I’ve had my pension account for years and they want me to redo my registration. Do I need the same documents as someone opening a new account?",
+        "gold": "Except as otherwise stated in Section 5.3 of these Guidelines, all data and documentation requirements applicable to New RSA registrations outlined in these Guidelines, shall also be applicable to Existing Contributor Recapture.",
+        "prediction": "",
+        "origin": "own",
+        "style": "legal"
+      },
+      {
+        "question": "I’m a Muslim worried about my pension being invested the halal way. Who advises PenCom on Islamic finance?",
+        "gold": "The FRACE shall serve as an advisory body to the Commission on Islamic Finance matters and specifically on all subsidiary legislations on investment of Fund VI assets.",
+        "prediction": "",
+        "origin": "own",
+        "style": "legal"
+      }
+    ],
+    "right passage, wrong span": [
+      {
+        "question": "What is the length of the Annuity Guaranteed Period under the MPP?",
+        "gold": "The Retiree Life Annuity is guaranteed for 10 years. Thus, if a retiree dies before 10 years, the balance of the equivalent monthly pension to complete the remaining period up to 10 years would be paid to his/her beneficiaries. Where the retiree dies after the guaranteed ten years period, nothing would be paid to the beneficiaries.",
+        "prediction": "The Retiree Life Annuity is guaranteed for 10 years.",
+        "origin": "faq_rule",
+        "style": "plain"
+      }
+    ],
+    "correctly refused": [
+      {
+        "question": "A pension advert said I will get 15% return. What return should I really expect from my pension?",
+        "gold": null,
+        "prediction": "",
+        "origin": "own",
+        "style": "legal"
+      }
+    ]
+  },
+  "manual_review": {
+    "reviewed": 0,
+    "yes": 0,
+    "partly": 0,
+    "no": 0,
+    "correct_after_review": 43
+  }
+}
