@@ -209,7 +209,56 @@ example was plain text and most no-answer passages were legal, so it learned tha
 legal text means "no answer". `matched` (the default) picks a passage of the same
 style that shares at most one key word with the question, which removes the shortcut.
 
-_Later steps not written yet._
+### 11. The plain-language preference experiment
+
+```
+python scripts/evaluate_plain_boost.py models/retriever-bge-small-en-v1.5-100pct models/reader-roberta-base-squad2-100pct-matched
+```
+
+Plain passages get a small boost before re-ranking, so they win close calls against
+legal passages. The script sweeps several boost sizes and reports what each does to
+retrieval (overall, FAQ, own, plain, legal), to end-to-end F1, and to readability.
+The app's boost (0.02) is fixed by design rather than tuned, because the validation
+split has no legal questions and so cannot show what a boost costs.
+
+### 12. Error analysis
+
+```
+python scripts/error_analysis.py
+```
+
+Sorts every test question into one outcome (correct, retriever missed the gold
+passage, gold passage read but the answer taken from another, wrong span, partly
+right, refused when answerable, answered when it should have refused), with counts
+by slice and real examples, in [results/error_analysis.md](results/error_analysis.md).
+Because the documents overlap, an answer from a different passage can still be
+right, so those cases go to `results/manual_review.csv` to be checked by hand.
+
+### 13. Run the app
+
+```
+python app/app.py
+```
+
+The app answers with the same models and settings as the experiments: the fine-tuned
+bge retriever, the 0.02 plain boost, the top 3 passages, the fine-tuned reader and the
+no-answer threshold tuned on validation. It shows the answer first, simple
+explanations of any glossary terms in it, and the passage and document it came from.
+If no answer clears the threshold, it politely refuses. The first start embeds every
+passage and saves the result to `models/passage_embeddings.npy`, so later starts are
+quick. On a laptop CPU an answer takes under a second.
+
+### 14. Deploy to Hugging Face Spaces
+
+```
+python scripts/prepare_space.py
+huggingface-cli login
+huggingface-cli upload <your-username>/ask-my-pension space . --repo-type=space
+```
+
+`prepare_space.py` copies only what the app needs into `space/` (about 640 MB, most of
+it the two models), with the Space's own README and requirements. Create an empty
+Gradio Space on Hugging Face first (free CPU hardware), then upload the folder to it.
 
 ## Dataset
 
