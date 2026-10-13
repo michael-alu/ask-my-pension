@@ -237,7 +237,7 @@ right, so those cases go to `results/manual_review.csv` to be checked by hand.
 ### 13. Run the app
 
 ```
-python app/app.py
+streamlit run app/streamlit_app.py
 ```
 
 The app answers with the same models and settings as the experiments: the fine-tuned
@@ -246,19 +246,32 @@ no-answer threshold tuned on validation. It shows the answer first, simple
 explanations of any glossary terms in it, and the passage and document it came from.
 If no answer clears the threshold, it politely refuses. The first start embeds every
 passage and saves the result to `models/passage_embeddings.npy`, so later starts are
-quick. On a laptop CPU an answer takes under a second.
+quick. On a laptop CPU an answer takes under two seconds, and the app uses about
+800 MB of memory.
 
-### 14. Deploy to Hugging Face Spaces
+### 14. Deploy on Streamlit Community Cloud
+
+The models (about 620 MB) cannot go in git, and the passages hold the publishers'
+text, so both live in a private Hugging Face model repository that the app downloads
+from on its first start.
 
 ```
-python scripts/prepare_space.py
-huggingface-cli login
-huggingface-cli upload <your-username>/ask-my-pension space . --repo-type=space
+python scripts/prepare_assets.py
+hf auth login
+hf upload michael-alu/ask-my-pension-assets assets . --private
 ```
 
-`prepare_space.py` copies only what the app needs into `space/` (about 640 MB, most of
-it the two models), with the Space's own README and requirements. Create an empty
-Gradio Space on Hugging Face first (free CPU hardware), then upload the folder to it.
+Then create the app on [Streamlit Community Cloud](https://share.streamlit.io) from
+this GitHub repository, with `app/streamlit_app.py` as the main file and Python 3.10
+or newer. Under Advanced settings, add two secrets:
+
+```
+HF_ASSETS_REPO = "michael-alu/ask-my-pension-assets"
+HF_TOKEN = "<a Hugging Face token that can read it>"
+```
+
+The app's own dependencies are in `app/requirements.txt`, which uses the CPU-only
+build of PyTorch to keep the install small.
 
 ## Dataset
 

@@ -25,8 +25,9 @@ accelerate
 # Readability
 textstat
 
-# Annotation tool and web app
+# Annotation tool (Gradio) and web app (Streamlit)
 gradio>=5,<6
+streamlit>=1.40,<2
 
 # Type checking
 mypy

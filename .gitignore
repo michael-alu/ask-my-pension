@@ -36,5 +36,8 @@ data/squad/
 # Downloads from Colab (results and models are unzipped into the repo instead)
 *.zip
 
-# The folder uploaded to Hugging Face Spaces, rebuilt by scripts/prepare_space.py
-space/
+# Files uploaded to the private Hugging Face assets repository, rebuilt by scripts/prepare_assets.py
+assets/
+
+# Download metadata that huggingface_hub writes when the app fetches its assets
+.cache/
