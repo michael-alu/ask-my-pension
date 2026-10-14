@@ -386,10 +386,10 @@
     ]
   },
   "manual_review": {
-    "reviewed": 0,
-    "yes": 0,
-    "partly": 0,
-    "no": 0,
-    "correct_after_review": 43
+    "reviewed": 36,
+    "yes": 5,
+    "partly": 7,
+    "no": 24,
+    "correct_after_review": 48
   }
 }

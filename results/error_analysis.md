@@ -47,6 +47,10 @@ Refusal rate 0.689, by distance {'far': 1.0, 'mid': 0.467, 'near': 0.6}.
 - [mid] How do I report a fraud alert on my bank account? -> "We send SMS notification on any remittance made into Retirement Savings Accounts as they occur. It may be that your phone number changed and..."
 - [mid] How do I apply for a Nigerian government job? -> "ii. Staff Identity Card or any of the following a) National Driver's License b) Permanent Voter's Card c) International Passport (mandatory ..."
 
+## Human review
+
+36 answers taken from another passage were checked by hand: 5 acceptable, 7 partly, 24 not. Correct answers: 43 by the automatic score, 48 after review, out of 134.
+
 ## Examples
 
 ### correct
