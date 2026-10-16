@@ -4,6 +4,8 @@
 want facts that stay true over time, so these passages are flagged for review.
 - reading_ease: Flesch Reading Ease. Higher means easier. Roughly, 60 to 70 is
 plain English, and below 30 is very hard, typical of legal text.
+- grade_level: Flesch-Kincaid grade level, the years of schooling a reader needs
+to follow the text. Lower means easier.
 """
 
 import re
@@ -35,3 +37,9 @@ def reading_ease(text: str) -> float:
     score: float = textstat.flesch_reading_ease(text)
 
     return round(score, 1)
+
+
+def grade_level(text: str) -> float:
+    grade: float = textstat.flesch_kincaid_grade(text)
+
+    return round(grade, 1)
