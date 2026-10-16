@@ -336,6 +336,13 @@ passage and saves the result to `models/passage_embeddings.npy`, so later starts
 quick. On a laptop CPU an answer takes under two seconds, and the app uses about
 800 MB of memory.
 
+To see every step the system takes for one question (BM25 for comparison, the
+retriever's scores, the plain boost, the reader's margins and the final decision):
+
+```
+python scripts/explain_answer.py "What is an RSA?"
+```
+
 ### 14. Deploy on Streamlit Community Cloud
 
 The models (about 620 MB) cannot go in git, and the passages hold the publishers'
