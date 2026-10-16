@@ -234,6 +234,12 @@ by slice and real examples, in [results/error_analysis.md](results/error_analysi
 Because the documents overlap, an answer from a different passage can still be
 right, so those cases go to `results/manual_review.csv` to be checked by hand.
 
+To draw the report's figures from the results files into `results/figures/`:
+
+```
+python scripts/make_figures.py
+```
+
 ### 13. Run the app
 
 ```
