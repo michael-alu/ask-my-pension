@@ -25,6 +25,9 @@ accelerate
 # Readability
 textstat
 
+# Report figures
+matplotlib<3.10
+
 # Annotation tool (Gradio) and web app (Streamlit)
 gradio>=5,<6
 streamlit>=1.40,<2
