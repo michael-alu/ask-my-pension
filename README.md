@@ -1,47 +1,124 @@
 # Ask My Pension
 
-A question answering assistant for the Nigerian Contributory Pension Scheme.
+A question answering assistant for the Nigerian Contributory Pension Scheme (CPS),
+built for ordinary workers with no finance background.
 
-A worker types a plain question such as "What is an RSA?" or "How do I move my
-RSA to another PFA?" and gets a short answer taken from real pension documents,
-the passage the answer came from, and simple explanations of any pension terms
-in the answer.
-
-The project is built for people with no finance background. Every design choice
-is judged by one question: would a normal Nigerian worker understand this answer
-on first read?
-
-## Status
-
-In development. Currently collecting and checking the source documents.
+A worker types a plain question such as "What is an RSA?" or "Can I have more than
+one RSA?" and gets a short answer taken from official pension documents, simple
+explanations of any pension terms in that answer, and the document and passage the
+answer came from. Questions outside the pension domain get a polite refusal instead
+of a guess.
 
 ## Project links
 
-- GitHub repository: this repo
-- Live app: _not deployed yet_
-- Demo video: _not recorded yet_
-- Report: _not written yet_
+- Live app: https://ask-my-pension.streamlit.app/
+- Demo video: https://canva.link/hn1b4m9v33tq0nh
+- GitHub repository: https://github.com/michael-alu/ask-my-pension
+- Report: submitted as a PDF with the assignment
+
+The live app runs on the free tier of Streamlit Community Cloud. If it has been idle,
+it may show a "wake up" button first and take a minute or two to start.
+
+## The problem
+
+Under the CPS, every worker has a Retirement Savings Account (RSA) with a Pension
+Fund Administrator (PFA) of their choice, and has to make their own decisions:
+which PFA to use, when to move their RSA, whether to make voluntary contributions,
+and what happens when they lose a job or retire. The answers exist in documents
+from the National Pension Commission (PenCom) and the PFAs, but those documents
+are long and hard to read. Their mean Flesch Reading Ease is 36.5 for the FAQs
+written for workers and 34.4 for the regulations, where anything below 50 counts
+as "difficult".
+
+The system works in English, because the pension regulations and guidelines are
+published in English, Nigeria's official language.
 
 ## How the system works
 
-The system has three stages.
+![Pipeline](results/figures/figure1_pipeline.png)
 
-1. **Retriever.** Given a question, find the passages most likely to hold the
-   answer. Baseline is BM25. The improved version is a small sentence embedding
-   model fine-tuned on our own question to passage pairs.
-2. **Reader.** Given the question and the top passages, point at the exact answer
-   span inside a passage, or say the passage has no answer. Baseline is an
-   off-the-shelf SQuAD 2.0 model used with no extra training. The improved
-   version is that model fine-tuned on our own annotated data.
-3. **Plain language support.** Passages are tagged `plain` or `legal`. When both
-   kinds answer the question, the system prefers the plain one. A glossary
-   explains key terms under the answer.
+1. **Retriever.** Finds the passages most likely to hold the answer. The baseline
+   is BM25. The final system uses `BAAI/bge-small-en-v1.5`, a small sentence
+   embedding model, fine-tuned on question and passage pairs from our training
+   split. It returns the top 30 passages.
+2. **Plain boost.** Passages written for workers (`plain`) get +0.02 on their
+   similarity score, so they win close calls against legal text. The top 3
+   passages go to the reader.
+3. **Reader.** `deepset/roberta-base-squad2`, fine-tuned on our training split,
+   points at the exact answer span in each passage or says the passage has no
+   answer. The answer with the highest margin over "no answer" is returned, but
+   only if that margin is above a threshold tuned on the validation split.
+4. **Glossary.** Pension terms in the answer (RSA, PFA, Programmed Withdrawal and
+   others) are shown with a plain explanation written by hand.
 
-Questions outside the pension domain get a polite refusal, not a guessed answer.
+## Dataset
 
-After the English system is finished and deployed, Igbo, Yoruba and Hausa are
-added as a convenience feature using an existing translation model. That layer
-is not trained and not evaluated by us.
+| Part | Size |
+|---|---|
+| Source documents | 12 public documents from PenCom, Trustfund Pensions and FCMB Pensions ([data/sources.csv](data/sources.csv)) |
+| Passages | 1,559 (428 plain, 1,131 legal): FAQ answers, numbered clauses and definitions |
+| FAQ question and answer pairs | 422, written by PenCom and the PFAs |
+| Hand-written questions | 64 in a worker's own words, with hand-marked answers (52 test, 9 validation, 3 train; 13 unanswerable on purpose) |
+| Out-of-domain questions | 45 the system should refuse, in three tiers: far, mid and near |
+| Glossary | 17 pension terms explained in plain words |
+
+The data is split by document section, never by question, so questions about the
+same section never appear in both training and test. Passages: 1,049 train, 220
+validation, 290 test. The split was frozen before any annotation was written.
+
+The raw documents belong to their publishers and are not stored here. The download
+script fetches them, and [data/raw/manifest.csv](data/raw/manifest.csv) records a
+checksum for each one.
+
+## Results
+
+All numbers are on the test split. Settings were chosen on training and validation
+data only.
+
+**Retrieval** (125 answerable test questions)
+
+| Retriever | Recall@1 | Recall@5 | MRR@10 |
+|---|---|---|---|
+| BM25 (baseline) | 0.280 | 0.464 | 0.354 |
+| bge-small, zero-shot | 0.352 | 0.568 | 0.442 |
+| bge-small, fine-tuned (final) | **0.456** | **0.704** | **0.558** |
+| MiniLM, fine-tuned | 0.416 | 0.648 | 0.511 |
+
+**Full system** (134 test questions, 45 out-of-domain questions)
+
+| System | End-to-end EM | End-to-end F1 | Out-of-domain refusal |
+|---|---|---|---|
+| BM25 + roberta zero-shot (baseline) | 0.015 | 0.190 | 0.578 |
+| fine-tuned bge + fine-tuned roberta (final) | **0.306** | **0.478** | 0.689 |
+| fine-tuned bge + fine-tuned tinyroberta | 0.336 | 0.479 | 0.400 |
+
+tinyroberta scores about the same but answers 60% of off-topic questions, so the
+app uses roberta: for questions about money, a confident wrong answer is worse
+than a refusal.
+
+**What we learned**
+
+- **Retrieval is the bottleneck.** Given the right passage, the fine-tuned reader
+  scores F1 0.762. End to end it scores 0.478, and the largest group of errors is passages
+  the retriever missed.
+- **A default setting hid the effect of fine-tuning.** The Hugging Face question
+  answering pipeline returns at most 15 answer tokens by default, while most gold
+  answers are longer. Raising the limit to 300 took the fine-tuned reader from
+  F1 0.137 to 0.762 with the right passage given.
+- **A shortcut in the training data.** With randomly chosen "no answer" passages,
+  the reader learned that legal text means "no answer" and refused 73% of
+  answerable legal questions. Choosing "no answer" passages of the same style
+  removed the cue (legal F1 0.22 to 0.54).
+- **Preferring plain sources barely helps readability** (less than one Flesch
+  point) and hurts legal retrieval, so explaining terms with the glossary matters
+  more.
+
+![Shortcut](results/figures/figure2_shortcut.png)
+
+Every experiment is listed in [results/experiments.md](results/experiments.md), and
+the error analysis, with real examples and a manual review of 36 answers, is in
+[results/error_analysis.md](results/error_analysis.md). All figures are in
+[results/figures/](results/figures/).
 
 ## Repository layout
 
@@ -246,6 +323,10 @@ python scripts/make_figures.py
 streamlit run app/streamlit_app.py
 ```
 
+The app needs the two fine-tuned models in `models/`: either train them with step 10
+and copy them in, or, with access, download them from the private assets repository
+(step 14).
+
 The app answers with the same models and settings as the experiments: the fine-tuned
 bge retriever, the 0.02 plain boost, the top 3 passages, the fine-tuned reader and the
 no-answer threshold tuned on validation. It shows the answer first, simple
@@ -279,18 +360,27 @@ HF_TOKEN = "<a Hugging Face token that can read it>"
 The app's own dependencies are in `app/requirements.txt`, which uses the CPU-only
 build of PyTorch to keep the install small.
 
-## Dataset
+## Limitations
 
-_Not written yet._
-
-## Experiments and results
-
-_Not written yet._
+- The hand-written test set is small (52 questions) and was written by one person.
+- The training and validation splits have few hand-written questions and none
+  about legal passages, so fine-tuning mostly learned FAQ wording.
+- Scoring assumes one correct passage per question, but the documents overlap.
+- The Pension Reform Act itself is not included, because its PDF text layer is broken.
+- The system answers in English only. Igbo, Yoruba and Hausa support through an
+  existing translation model is future work.
 
 ## Acknowledgements and licensing
 
-The full list of documents, models, libraries and papers used, with sources and
-licences, is in the project report.
+- Source documents: National Pension Commission (PenCom), Trustfund Pensions and
+  FCMB Pensions. They are not redistributed here.
+- Models: `deepset/roberta-base-squad2` and `deepset/tinyroberta-squad2`
+  (CC-BY-4.0), `BAAI/bge-small-en-v1.5` (MIT),
+  `sentence-transformers/all-MiniLM-L6-v2` (Apache-2.0).
+- Libraries: Hugging Face Transformers, sentence-transformers, rank-bm25,
+  pdfplumber, textstat, matplotlib, Streamlit and Gradio.
+
+The full list of papers and sources is in the report.
 
 This is a student project. It is not official financial or legal advice, and it
 is not connected to or endorsed by PenCom or any pension fund administrator.
